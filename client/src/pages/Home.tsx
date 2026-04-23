@@ -280,29 +280,54 @@ export default function Home() {
         >
           <style>{`
             @keyframes logoTracing {
-              0%, 100% { filter: drop-shadow(0 0 2px rgba(237, 192, 136, 0.2)) brightness(1.1); }
-              50% { filter: drop-shadow(0 0 25px rgba(237, 192, 136, 0.8)) brightness(1.6); }
+              0%, 100% { 
+                filter: drop-shadow(0 0 5px rgba(237, 192, 136, 0.3)) brightness(1.2); 
+                transform: scale(1) rotate(0deg);
+              }
+              50% { 
+                filter: drop-shadow(0 0 40px rgba(237, 192, 136, 0.9)) brightness(1.8); 
+                transform: scale(1.05) rotate(2deg);
+              }
             }
             @keyframes shimmerBorder {
-              0% { transform: translate(-120%, -120%) rotate(45deg); }
-              100% { transform: translate(120%, 120%) rotate(45deg); }
+              0% { transform: translate(-150%, -150%) rotate(45deg); }
+              100% { transform: translate(150%, 150%) rotate(45deg); }
+            }
+            @keyframes floatLogo {
+              0%, 100% { transform: translateY(0px) translateX(0px); }
+              25% { transform: translateY(-15px) translateX(10px); }
+              50% { transform: translateY(-5px) translateX(-10px); }
+              75% { transform: translateY(-20px) translateX(5px); }
+            }
+            @keyframes pulseGlow {
+              0%, 100% { opacity: 0.4; filter: blur(20px); }
+              50% { opacity: 0.8; filter: blur(40px); }
             }
             .logo-container-animated {
               position: relative;
               display: flex;
               align-items: center;
               justify-content: center;
-              animation: logoTracing 4s ease-in-out infinite;
+              animation: logoTracing 6s ease-in-out infinite, floatLogo 12s ease-in-out infinite;
             }
             .logo-outline-glow {
               position: absolute;
-              width: 150%;
-              height: 150%;
-              background: linear-gradient(45deg, transparent, rgba(237, 192, 136, 0.6), transparent);
-              animation: shimmerBorder 3s linear infinite;
+              width: 200%;
+              height: 200%;
+              background: linear-gradient(45deg, transparent, rgba(237, 192, 136, 0.8), rgba(255, 255, 255, 0.4), rgba(237, 192, 136, 0.8), transparent);
+              animation: shimmerBorder 4s linear infinite;
+            }
+            .logo-pulse-bg {
+              position: absolute;
+              width: 120%;
+              height: 120%;
+              background: radial-gradient(circle, rgba(237, 192, 136, 0.4) 0%, transparent 70%);
+              animation: pulseGlow 4s ease-in-out infinite;
+              z-index: -1;
             }
           `}</style>
           <div className="logo-container-animated">
+            <div className="logo-pulse-bg" />
             <img
               src="/images/logo_transparent.png"
               alt="Almeida Studio Pet Care - Marca d'água"
