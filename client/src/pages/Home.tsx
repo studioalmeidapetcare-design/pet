@@ -11,19 +11,19 @@ import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin, Phone, Instagram, 
 const petGalleryImages = [
   {
     id: 1,
-    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_1.webp",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_1.png",
     alt: "Bulldogs Franceses Estilosos",
     title: "Bulldogs Franceses",
   },
   {
     id: 2,
-    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.webp",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.png",
     alt: "Border Collie Marrom e Branco",
     title: "Border Collie",
   },
   {
     id: 3,
-    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_3.webp",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_3.png",
     alt: "Shih Tzu Glamourosa",
     title: "Shih Tzu Glamourosa",
   },
@@ -162,7 +162,7 @@ export default function Home() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#EDC088] to-[#F5E6D3] rounded-[40px] opacity-20 blur-xl" />
             <img
-              src="https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.webp"
+              src="https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.png"
               alt="Studio Almeida Pet Care"
               className="relative rounded-[40px] shadow-2xl w-full h-auto object-cover"
             />
