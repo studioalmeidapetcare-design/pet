@@ -273,22 +273,47 @@ export default function Home() {
           }}
         />
 
-        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE ===== */}
+        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE COM ANIMAÇÃO ===== */}
         <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          style={{ opacity: 0.15 }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
+          style={{ opacity: 0.18 }}
         >
+          <style>{`
+            @keyframes logoGlow {
+              0%, 100% { filter: brightness(1.1) contrast(1.05) drop-shadow(0 0 5px rgba(237, 192, 136, 0.2)); transform: scale(1); }
+              50% { filter: brightness(1.3) contrast(1.1) drop-shadow(0 0 25px rgba(237, 192, 136, 0.5)); transform: scale(1.02); }
+            }
+            @keyframes rotateLogo {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            .animated-logo-bg {
+              animation: logoGlow 8s ease-in-out infinite;
+              transition: all 1s ease-in-out;
+            }
+          `}</style>
+          <div className="relative flex items-center justify-center w-full h-full">
+            {/* Efeito de contorno brilhante rotativo atrás do logo */}
+            <div 
+              className="absolute rounded-full opacity-20"
+              style={{
+                width: "min(85vw, 85vh)",
+                height: "min(85vw, 85vh)",
+                border: "2px dashed #EDC088",
+                animation: "rotateLogo 60s linear infinite",
+              }}
+            />
             <img
-            src="/images/logo_transparent.png"
-            alt="Almeida Studio Pet Care - Marca d'água"
-            style={{
-              width: "min(100vw, 100vh)",
-              height: "min(100vw, 100vh)",
-              objectFit: "contain",
-              filter: "brightness(1.1) contrast(1.05)",
-              opacity: 0.8,
-            }}
-          />
+              src="/images/logo_transparent.png"
+              alt="Almeida Studio Pet Care - Marca d'água"
+              className="animated-logo-bg"
+              style={{
+                width: "min(100vw, 100vh)",
+                height: "min(100vw, 100vh)",
+                objectFit: "contain",
+              }}
+            />
+          </div>
         </div>
       </div>
 
