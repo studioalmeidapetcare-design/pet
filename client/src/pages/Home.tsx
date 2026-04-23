@@ -316,7 +316,7 @@ export default function Home() {
           {/* CTA + Menu mobile */}
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/5541999223305"
+              href="https://wa.me/554192233305"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:flex items-center gap-2 text-white font-semibold px-5 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
@@ -354,7 +354,7 @@ export default function Home() {
               </a>
             ))}
             <a
-              href="https://wa.me/5541999223305"
+              href="https://wa.me/554192233305"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-white font-semibold mt-4 px-5 py-3 rounded-full justify-center"
@@ -402,7 +402,7 @@ export default function Home() {
 
             <div className="flex flex-wrap gap-4 mb-10">
               <a
-                href="https://wa.me/5541999223305"
+                href="https://wa.me/554192233305"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl"
@@ -569,7 +569,7 @@ export default function Home() {
                 seguros e adequados para cada tipo de pelagem.
               </p>
               <a
-                href="https://wa.me/5541999223305"
+                href="https://wa.me/554192233305"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-bold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
@@ -877,7 +877,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {/* WhatsApp */}
             <a
-              href="https://wa.me/5541999223305"
+              href="https://wa.me/554192233305"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
@@ -894,7 +894,7 @@ export default function Home() {
                   WhatsApp
                 </h4>
                 <p className="text-sm" style={{ color: "#555" }}>
-                  (41) 99922-3305
+                  (41) 9922-3305
                 </p>
                 <p className="text-xs mt-1" style={{ color: "#888" }}>
                   Resposta rápida!
@@ -1063,7 +1063,7 @@ export default function Home() {
               <Instagram size={18} />
             </a>
             <a
-              href="https://wa.me/5541999223305"
+              href="https://wa.me/554192233305"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
@@ -1077,7 +1077,7 @@ export default function Home() {
 
       {/* ========== BOTÃO FLUTUANTE WHATSAPP ========== */}
       <a
-        href="https://wa.me/5541999223305"
+        href="https://wa.me/554192233305"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
