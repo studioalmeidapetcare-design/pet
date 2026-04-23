@@ -273,39 +273,36 @@ export default function Home() {
           }}
         />
 
-        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE COM CONTORNO VIVO ===== */}
+        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE COM CONTORNO VIVO INTENSO ===== */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
-          style={{ opacity: 0.22 }}
+          style={{ opacity: 0.35 }}
         >
           <style>{`
             @keyframes logoTracing {
-              0% { filter: drop-shadow(0 0 0px rgba(237, 192, 136, 0)); }
-              50% { filter: drop-shadow(0 0 15px rgba(237, 192, 136, 0.6)) brightness(1.4); }
-              100% { filter: drop-shadow(0 0 0px rgba(237, 192, 136, 0)); }
+              0%, 100% { filter: drop-shadow(0 0 2px rgba(237, 192, 136, 0.2)) brightness(1.1); }
+              50% { filter: drop-shadow(0 0 25px rgba(237, 192, 136, 0.8)) brightness(1.6); }
             }
             @keyframes shimmerBorder {
-              0% { transform: translate(-100%, -100%) rotate(45deg); }
-              100% { transform: translate(100%, 100%) rotate(45deg); }
+              0% { transform: translate(-120%, -120%) rotate(45deg); }
+              100% { transform: translate(120%, 120%) rotate(45deg); }
             }
             .logo-container-animated {
               position: relative;
               display: flex;
               align-items: center;
               justify-content: center;
-              animation: logoTracing 6s ease-in-out infinite;
+              animation: logoTracing 4s ease-in-out infinite;
             }
             .logo-outline-glow {
               position: absolute;
-              width: 100%;
-              height: 100%;
-              background: linear-gradient(45deg, transparent, rgba(237, 192, 136, 0.3), transparent);
-              animation: shimmerBorder 4s linear infinite;
-              mix-blend-mode: overlay;
+              width: 150%;
+              height: 150%;
+              background: linear-gradient(45deg, transparent, rgba(237, 192, 136, 0.6), transparent);
+              animation: shimmerBorder 3s linear infinite;
             }
           `}</style>
           <div className="logo-container-animated">
-            {/* O logo principal com efeito de brilho nas bordas */}
             <img
               src="/images/logo_transparent.png"
               alt="Almeida Studio Pet Care - Marca d'água"
@@ -321,7 +318,6 @@ export default function Home() {
                 WebkitMaskRepeat: "no-repeat",
               }}
             />
-            {/* Camada de brilho que percorre o logo */}
             <div 
               className="absolute inset-0"
               style={{
@@ -633,11 +629,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== SOBRE SECTION ========== */}
+      {/* ========== SOBRE SECTION (GLASSMORPISM) ========== */}
       <section
         id="sobre"
         className="relative z-10 py-16 md:py-24"
-        style={{ backgroundColor: "#F5E6D3" }}
+        style={{ 
+          backgroundColor: "rgba(245, 230, 211, 0.85)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(237, 192, 136, 0.3)",
+          borderBottom: "1px solid rgba(237, 192, 136, 0.3)"
+        }}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
@@ -1004,13 +1005,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== CONTATO SECTION ========== */}
-      <section
+      {/* ========== FOOTER SECTION (GLASSMORPISM) ========== */}
+      <footer
         id="contato"
         className="relative z-10 py-16 md:py-24"
-        style={{ backgroundColor: "#F5E6D3" }}
-      >
-        <div className="max-w-7xl mx-auto px-4">
+        style={{ 
+          backgroundColor: "rgba(245, 230, 211, 0.85)",
+          backdropFilter: "blur(12px)",
+          borderTop: "1px solid rgba(237, 192, 136, 0.3)"
+        }}
+      >     <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
             <p
               className="text-sm font-semibold tracking-widest uppercase mb-3"
