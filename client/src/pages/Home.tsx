@@ -529,7 +529,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2">
                 <Clock size={18} style={{ color: "#EDC088" }} />
-                <span className="text-sm">Seg–Sáb: 8h–18h</span>
+                <span className="text-sm">Ter–Sex: 9h–17h | Sáb: 9h–15h</span>
               </div>
             </div>
           </div>
@@ -1156,8 +1156,8 @@ export default function Home() {
             <h4 className="text-2xl font-bold text-white mb-6">Horário de Funcionamento</h4>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
               {[
-                { day: "Segunda – Sexta", hours: "8h às 18h" },
-                { day: "Sábado", hours: "8h às 16h" },
+                { day: "Terça – Sexta", hours: "9h às 17h" },
+                { day: "Sábado", hours: "9h às 15h" },
                 { day: "Domingo", hours: "Fechado" },
               ].map((h, i) => (
                 <div
