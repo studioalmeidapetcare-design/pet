@@ -1023,10 +1023,10 @@ export default function Home() {
                 className="w-16 h-16 rounded-2xl flex items-center justify-center"
                 style={{ backgroundColor: "rgba(37, 211, 102, 0.1)" }}
               >
-                <MessageCircle size={32} style={{ color: "#25D366" }} />
+                <MessageCircle size={32} fill="#25D366" style={{ color: "#25D366", filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.3))" }} />
               </div>
               <div>
-                <h4 className="font-bold text-lg mb-1" style={{ color: "#25D366" }}>
+                <h4 className="font-bold text-lg mb-1" style={{ color: "#128C7E", textShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
                   WhatsApp
                 </h4>
                 <p className="text-sm" style={{ color: "#555" }}>
@@ -1049,10 +1049,10 @@ export default function Home() {
                 className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
                 style={{ backgroundColor: "rgba(11, 124, 130, 0.1)" }}
               >
-                <MapPin size={32} style={{ color: "#0B7C82" }} />
+                <MapPin size={32} style={{ color: "#0B7C82", filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.3))" }} />
               </div>
               <div>
-                <h4 className="font-bold text-lg mb-1" style={{ color: "#0B7C82" }}>
+                <h4 className="font-bold text-lg mb-1" style={{ color: "#085a60", textShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
                   Localização
                 </h4>
                 <p className="text-sm" style={{ color: "#555" }}>
@@ -1092,7 +1092,7 @@ export default function Home() {
                 </a>
               </div>
               <div>
-                <h4 className="font-bold text-lg mb-1" style={{ color: "#0B7C82" }}>
+                <h4 className="font-bold text-lg mb-1" style={{ color: "#085a60", textShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
                   Redes Sociais
                 </h4>
                 <p className="text-sm" style={{ color: "#555" }}>
@@ -1222,12 +1222,12 @@ export default function Home() {
           width: 60,
           height: 60,
           backgroundColor: "#25D366",
-          boxShadow: "0 0 30px rgba(37, 211, 102, 0.6)",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3), 0 0 30px rgba(37, 211, 102, 0.4)",
           animation: "float 3s ease-in-out infinite",
         }}
         title="Fale conosco pelo WhatsApp"
       >
-        <MessageCircle size={28} color="white" />
+        <MessageCircle size={28} fill="white" color="white" style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.2))" }} />
       </a>
 
       {selectedImage && (
