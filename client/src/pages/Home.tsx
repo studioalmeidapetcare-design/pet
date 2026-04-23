@@ -11,19 +11,19 @@ import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin, Phone, Instagram, 
 const petGalleryImages = [
   {
     id: 1,
-    src: "/manus-storage/pet_1_enhanced_1c86bd60.webp",
+    src: "/manus-storage/pet_1_enhanced_facf183e.webp",
     alt: "Bulldogs Franceses Estilosos",
     title: "Bulldogs Franceses",
   },
   {
     id: 2,
-    src: "/manus-storage/pet_2_enhanced_7622688a.webp",
+    src: "/manus-storage/pet_2_enhanced_8a6fe68f.webp",
     alt: "Border Collie Marrom e Branco",
     title: "Border Collie",
   },
   {
     id: 3,
-    src: "/manus-storage/pet_3_enhanced_4c474cbe.webp",
+    src: "/manus-storage/pet_3_enhanced_9c9017ca.webp",
     alt: "Shih Tzu Glamourosa",
     title: "Shih Tzu Glamourosa",
   },
@@ -149,7 +149,7 @@ export default function Home() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#EDC088] to-[#F5E6D3] rounded-[40px] opacity-20 blur-xl" />
             <img
-              src="/manus-storage/pet_2_enhanced_7622688a.webp"
+              src="/manus-storage/pet_2_enhanced_8a6fe68f.webp"
               alt="Studio Almeida Pet Care"
               className="relative rounded-[40px] shadow-2xl w-full h-auto object-cover"
             />
