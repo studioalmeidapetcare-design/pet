@@ -341,8 +341,8 @@ export default function Home() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          backgroundColor: scrolled ? "rgba(11, 124, 130, 0.97)" : "rgba(11, 124, 130, 0.85)",
-          backdropFilter: "blur(16px)",
+          backgroundColor: scrolled ? "rgba(11, 124, 130, 0.75)" : "rgba(11, 124, 130, 0.4)",
+          backdropFilter: "blur(12px)",
           boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.3)" : "none",
           borderBottom: "1px solid rgba(237, 192, 136, 0.2)",
           animation: "slideDown 0.6s ease-out",
@@ -418,7 +418,7 @@ export default function Home() {
         {mobileMenuOpen && (
           <div
             className="md:hidden border-t border-[#EDC088]/20 py-4 px-4"
-            style={{ backgroundColor: "rgba(11, 124, 130, 0.98)" }}
+            style={{ backgroundColor: "rgba(11, 124, 130, 0.85)", backdropFilter: "blur(12px)" }}
           >
             {["Sobre", "Serviços", "Galeria", "Depoimentos", "Contato"].map((item) => (
               <a
@@ -634,8 +634,8 @@ export default function Home() {
         id="sobre"
         className="relative z-10 py-16 md:py-24"
         style={{ 
-          backgroundColor: "rgba(245, 230, 211, 0.85)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(245, 230, 211, 0.65)",
+          backdropFilter: "blur(8px)",
           borderTop: "1px solid rgba(237, 192, 136, 0.3)",
           borderBottom: "1px solid rgba(237, 192, 136, 0.3)"
         }}
@@ -708,7 +708,7 @@ export default function Home() {
                 <div
                   key={i}
                   className="rounded-2xl p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                  style={{ backgroundColor: "white" }}
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
                 >
                   <div className="mb-3">{item.icon}</div>
                   <h4 className="font-bold mb-1 text-sm" style={{ color: "#0B7C82" }}>
@@ -786,7 +786,7 @@ export default function Home() {
       <section
         id="galeria"
         className="relative z-10 py-16 md:py-24"
-        style={{ backgroundColor: "#F5E6D3" }}
+        style={{ backgroundColor: "rgba(245, 230, 211, 0.7)", backdropFilter: "blur(10px)" }}
       >
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
@@ -1010,8 +1010,8 @@ export default function Home() {
         id="contato"
         className="relative z-10 py-16 md:py-24"
         style={{ 
-          backgroundColor: "rgba(245, 230, 211, 0.85)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(245, 230, 211, 0.65)",
+          backdropFilter: "blur(8px)",
           borderTop: "1px solid rgba(237, 192, 136, 0.3)"
         }}
       >
@@ -1039,7 +1039,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center"
@@ -1066,7 +1066,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group"
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
@@ -1090,7 +1090,7 @@ export default function Home() {
             {/* Redes Sociais */}
             <div
               className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
             >
               <div className="flex gap-3">
                 <a
