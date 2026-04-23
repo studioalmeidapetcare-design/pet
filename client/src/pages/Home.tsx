@@ -94,13 +94,28 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#0B7C82]/95 backdrop-blur-md shadow-lg border-b border-[#EDC088]/20" style={{
         animation: 'slideDown 0.6s ease-out'
       }}>
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-[#EDC088] flex items-center justify-center">
-              <span className="text-[#0B7C82] font-bold text-xl">A</span>
+            {/* Logo */}
+            <div className="w-14 h-14 flex items-center justify-center">
+              <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                {/* Circle border */}
+                <circle cx="100" cy="100" r="95" fill="none" stroke="#EDC088" strokeWidth="3"/>
+                {/* Shih Tzu silhouette */}
+                <g fill="#EDC088" opacity="0.9">
+                  <ellipse cx="100" cy="70" rx="12" ry="14"/>
+                  <path d="M 95 65 Q 90 60 85 62 Q 88 55 95 55 Q 102 55 105 62 Q 100 60 95 65" fill="#EDC088"/>
+                  <ellipse cx="100" cy="95" rx="20" ry="25"/>
+                  <ellipse cx="85" cy="105" rx="8" ry="12"/>
+                  <ellipse cx="115" cy="105" rx="8" ry="12"/>
+                </g>
+                {/* Text */}
+                <text x="100" y="145" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#EDC088" fontFamily="serif">Almeida</text>
+                <text x="100" y="160" fontSize="10" textAnchor="middle" fill="#EDC088" fontFamily="serif">STUDIO PET CARE</text>
+              </svg>
             </div>
             <div>
-              <h1 className="text-white font-bold text-xl">Almeida</h1>
+              <h1 className="text-white font-bold text-lg">Almeida</h1>
               <p className="text-[#EDC088] text-xs">Studio Pet Care</p>
             </div>
           </div>
@@ -116,7 +131,10 @@ export default function Home() {
               href="https://wa.me/5541999223305"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#EDC088] text-[#0B7C82] px-6 py-2 rounded-full font-semibold hover:bg-[#f5d9a8] transition flex items-center gap-2"
+              className="bg-[#25D366] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#20ba58] transition flex items-center gap-2 animate-pulse"
+              style={{
+                animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+              }}
             >
               <MessageCircle size={18} />
               WhatsApp
@@ -139,7 +157,10 @@ export default function Home() {
               href="https://wa.me/5541999223305"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#EDC088] text-[#0B7C82] px-8 py-3 rounded-full font-bold hover:bg-[#f5d9a8] transition"
+              className="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold hover:bg-[#20ba58] transition animate-pulse"
+              style={{
+                animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+              }}
             >
               Agendar Agora
             </a>
@@ -294,9 +315,11 @@ export default function Home() {
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-4 p-6 rounded-2xl hover:bg-white/10 transition"
             >
-              <MessageCircle size={40} className="text-[#EDC088]" />
+              <MessageCircle size={40} className="text-[#25D366] animate-pulse" style={{
+                animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+              }} />
               <div>
-                <h4 className="text-[#EDC088] font-bold mb-2">WhatsApp</h4>
+                <h4 className="text-[#25D366] font-bold mb-2">WhatsApp</h4>
                 <p className="text-[#F5E6D3]">(41) 9922-3305</p>
               </div>
             </a>
@@ -342,7 +365,10 @@ export default function Home() {
         href="https://wa.me/5541999223305"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center justify-center"
+        className="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#20ba58] transition z-50 flex items-center justify-center animate-pulse"
+        style={{
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite, float 3s ease-in-out infinite'
+        }}
       >
         <MessageCircle size={28} />
       </a>
