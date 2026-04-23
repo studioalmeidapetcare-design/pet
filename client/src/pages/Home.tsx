@@ -244,37 +244,48 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663561824623/SPhYGz8CcxhVjwHBF5eAWn/gallery-pet-1-RyJuETzGZGpJzsVsbt2G7a.webp"
-                alt="Pet grooming result 1"
+                src="/manus-storage/google_maps_pet_1_61dcfd31.webp"
+                alt="Shih Tzu branco com laço preto"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold">Poodle Branco - Tosa Redonda</p>
+                <p className="text-white font-semibold text-sm">Shih Tzu Elegante</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663561824623/SPhYGz8CcxhVjwHBF5eAWn/gallery-pet-2-278qM8bDejWn4SdAjKSvak.webp"
-                alt="Pet grooming result 2"
+                src="/manus-storage/google_maps_pet_2_07434ae3.webp"
+                alt="Bulldog branco e preto com gravata"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold">Shih Tzu - Tosa Personalizada</p>
+                <p className="text-white font-semibold text-sm">Bulldog Estiloso</p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663561824623/SPhYGz8CcxhVjwHBF5eAWn/gallery-pet-3-XdUYDbi3gG98UXUPoX37uhB.webp"
-                alt="Pet grooming result 3"
+                src="/manus-storage/google_maps_pet_3_427ee274.webp"
+                alt="Schnauzer com coleira amarela"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold">Pomerânio - Tosa Estética</p>
+                <p className="text-white font-semibold text-sm">Schnauzer Feliz</p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
+              <img
+                src="/manus-storage/google_maps_pet_4_d3c622ee.webp"
+                alt="Shih Tzu branco com laço rosa e cristais"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                <p className="text-white font-semibold text-sm">Shih Tzu Glamourosa</p>
               </div>
             </div>
           </div>
