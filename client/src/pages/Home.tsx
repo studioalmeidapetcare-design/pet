@@ -1006,13 +1006,16 @@ export default function Home() {
               </div>
             </a>
 
-            {/* Localização */}
-            <div
-              className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            {/* Localização Funcional */}
+            <a
+              href="https://www.google.com/maps/place/Almeida+Studio+Pet+Care+-+Jardim+das+Am%C3%A9ricas/data=!4m7!3m6!1s0x94dce546214dbf77:0xedda7d3baa50ba4e!8m2!3d-25.4719619!4d-49.2280487!16s%2Fg%2F11ffw7grrz!19sChIJd79NIUbl3JQRTrpQqjt92u0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group"
               style={{ backgroundColor: "white" }}
             >
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
                 style={{ backgroundColor: "rgba(11, 124, 130, 0.1)" }}
               >
                 <MapPin size={32} style={{ color: "#0B7C82" }} />
@@ -1028,7 +1031,7 @@ export default function Home() {
                   Curitiba – PR
                 </p>
               </div>
-            </div>
+            </a>
 
             {/* Redes Sociais */}
             <div
