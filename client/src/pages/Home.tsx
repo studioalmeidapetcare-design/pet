@@ -122,23 +122,33 @@ const services = [
 
 const testimonials = [
   {
+    name: "Viviane Monteiro",
+    role: "Local Guide",
+    text: "Super indico e recomendo o Almeida! Profissional mega caprichoso, dedicado e detalhista. Meu Shih tzu Luke já se sente em casa!",
+    stars: 5,
+    date: "2 anos atrás"
+  },
+  {
+    name: "wanessa garcia vital",
+    role: "Cliente Fiel",
+    text: "Tenho muito confiança em deixar minhas Pets no estúdio Almeida, é nítido o carinho que eles tem com os bichinhos! Atendimento VIP.",
+    stars: 5,
+    date: "2 anos atrás"
+  },
+  {
+    name: "Rodolfo Oliveira",
+    role: "Cliente",
+    text: "Deixamos nossa pequena nos cuidados do Robson, simplesmente um profissional fantástico e querido. Confiamos plenamente!",
+    stars: 5,
+    date: "8 meses atrás"
+  },
+  {
     name: "Ana Paula",
-    pet: "Shih Tzu - Bella",
-    text: "Minha Bella sempre sai linda! A equipe é super carinhosa e profissional. Recomendo demais!",
+    role: "Cliente",
+    text: "Dia de banho no tio Roberson é um evento que tem como resultado muita fofurice! Minha pet sempre sai linda.",
     stars: 5,
-  },
-  {
-    name: "Carlos Eduardo",
-    pet: "Poodle - Thor",
-    text: "Melhor pet shop de Curitiba! O Thor ama ir lá, fica todo animado quando chega perto.",
-    stars: 5,
-  },
-  {
-    name: "Mariana Costa",
-    pet: "Maltês - Mel",
-    text: "Atendimento excelente, ambiente limpo e organizado. Minha Mel sempre volta linda!",
-    stars: 5,
-  },
+    date: "1 ano atrás"
+  }
 ];
 
 interface SelectedImage {
@@ -155,6 +165,7 @@ export default function Home() {
   const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const galleryRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -189,6 +200,14 @@ export default function Home() {
     return () => {
       if (autoScrollRef.current !== null) clearInterval(autoScrollRef.current);
     };
+  }, []);
+
+  // Auto-play para depoimentos
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
   const handleGalleryScroll = (direction: "left" | "right") => {
@@ -793,20 +812,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== DEPOIMENTOS SECTION ========== */}
+      {/* ========== DEPOIMENTOS SECTION (ANIMADO ESTILO GOOGLE) ========== */}
       <section
         id="depoimentos"
-        className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24"
+        className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24 overflow-hidden"
       >
         <div className="text-center mb-14">
           <p
             className="text-sm font-semibold tracking-widest uppercase mb-3"
             style={{ color: "#EDC088" }}
           >
-            O que Dizem
+            O que Dizem no Google
           </p>
           <h3 className="text-4xl md:text-5xl font-bold text-white">
-            Tutores Satisfeitos
+            Avaliações dos Tutores
           </h3>
           <div
             className="w-20 h-1 mx-auto mt-4 rounded-full"
@@ -814,41 +833,93 @@ export default function Home() {
           />
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="rounded-3xl p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-              style={{
-                backgroundColor: "rgba(255,255,255,0.08)",
-                backdropFilter: "blur(12px)",
-                border: "1px solid rgba(237, 192, 136, 0.2)",
-              }}
-            >
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.stars }).map((_, s) => (
-                  <Star key={s} size={16} fill="#EDC088" style={{ color: "#EDC088" }} />
-                ))}
-              </div>
-              <p className="text-base leading-relaxed mb-6 italic" style={{ color: "#d4e8ea" }}>
-                "{t.text}"
-              </p>
-              <div className="flex items-center gap-3">
+        <div className="relative max-w-4xl mx-auto">
+          {/* Container do Carrossel */}
+          <div className="flex transition-transform duration-700 ease-in-out" 
+               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}>
+            {testimonials.map((t, i) => (
+              <div key={i} className="w-full flex-shrink-0 px-4">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm"
-                  style={{ backgroundColor: "#EDC088", color: "#0B7C82" }}
+                  className="rounded-3xl p-8 md:p-12 transition-all duration-300 shadow-2xl relative"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.08)",
+                    backdropFilter: "blur(12px)",
+                    border: "1px solid rgba(237, 192, 136, 0.2)",
+                  }}
                 >
-                  {t.name[0]}
-                </div>
-                <div>
-                  <p className="font-bold text-sm text-white">{t.name}</p>
-                  <p className="text-xs" style={{ color: "#EDC088" }}>
-                    {t.pet}
+                  {/* Google Icon/Logo Simulation */}
+                  <div className="absolute top-8 right-8 opacity-20">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="white">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                  </div>
+
+                  <div className="flex gap-1 mb-6">
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} size={20} fill="#EDC088" style={{ color: "#EDC088" }} />
+                    ))}
+                  </div>
+                  
+                  <p className="text-xl md:text-2xl leading-relaxed mb-8 italic font-medium" style={{ color: "#d4e8ea" }}>
+                    "{t.text}"
                   </p>
+
+                  <div className="flex items-center gap-4">
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl shadow-lg"
+                      style={{ backgroundColor: "#EDC088", color: "#0B7C82" }}
+                    >
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg text-white flex items-center gap-2">
+                        {t.name}
+                        {t.role === "Local Guide" && (
+                          <span className="text-[10px] bg-[#EDC088]/20 text-[#EDC088] px-2 py-0.5 rounded-full border border-[#EDC088]/30">
+                            Local Guide
+                          </span>
+                        )}
+                      </p>
+                      <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+                        {t.date} • No Google Maps
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Indicadores de Navegação */}
+          <div className="flex justify-center gap-3 mt-10">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveTestimonial(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeTestimonial === i ? "w-8" : "w-2"
+                }`}
+                style={{ backgroundColor: activeTestimonial === i ? "#EDC088" : "rgba(255,255,255,0.2)" }}
+              />
+            ))}
+          </div>
+
+          {/* Botões de Seta */}
+          <button 
+            onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+            className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 p-3 rounded-full text-white/50 hover:text-[#EDC088] transition-colors"
+          >
+            <ChevronLeft size={40} />
+          </button>
+          <button 
+            onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
+            className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 p-3 rounded-full text-white/50 hover:text-[#EDC088] transition-colors"
+          >
+            <ChevronRight size={40} />
+          </button>
         </div>
       </section>
 
