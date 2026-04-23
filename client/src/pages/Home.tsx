@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, ReactElement } from "react";
+import { useState, useEffect, useRef, ReactElement } from "react";
 import {
   X,
   ChevronLeft,
@@ -159,9 +159,6 @@ interface SelectedImage {
 }
 
 export default function Home() {
-  // Authentication state (if needed in the future)
-  // To implement login/logout functionality, use the useAuth hook from @/hooks/useAuth
-
   const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -170,7 +167,6 @@ export default function Home() {
   const galleryRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Detectar scroll para efeito no header
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -179,7 +175,6 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Auto-scroll da galeria com loop infinito
   useEffect(() => {
     const gallery = galleryRef.current;
     if (!gallery) return;
@@ -203,7 +198,6 @@ export default function Home() {
     };
   }, []);
 
-  // Auto-play para depoimentos
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -211,7 +205,6 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  // Auto-play para imagens do Hero
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveHeroImage((prev) => (prev + 1) % 3);
@@ -239,9 +232,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#0B7C82" }}>
-      {/* ========== FUNDO FIXO COM MARCA D'ÁGUA ========== */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Gradiente de fundo */}
         <div
           className="absolute inset-0"
           style={{
@@ -250,7 +241,6 @@ export default function Home() {
           }}
         />
 
-        {/* Círculos decorativos animados */}
         <div
           className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full opacity-10"
           style={{
@@ -273,7 +263,6 @@ export default function Home() {
           }}
         />
 
-        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE COM CONTORNO VIVO INTENSO ===== */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
           style={{ opacity: 0.35 }}
@@ -362,7 +351,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ========== HEADER FIXO ========== */}
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
@@ -374,7 +362,6 @@ export default function Home() {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo no header com função voltar ao topo */}
           <div 
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -402,7 +389,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Navegação desktop */}
           <nav className="hidden md:flex gap-8">
             {["Sobre", "Serviços", "Galeria", "Depoimentos", "Contato"].map((item) => (
               <a
@@ -415,7 +401,6 @@ export default function Home() {
             ))}
           </nav>
 
-          {/* CTA + Menu mobile */}
           <div className="flex items-center gap-3">
             <a
               href="https://wa.me/554199223305"
@@ -439,7 +424,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Menu mobile */}
         {mobileMenuOpen && (
           <div
             className="md:hidden border-t border-[#EDC088]/20 py-4 px-4"
@@ -469,13 +453,11 @@ export default function Home() {
         )}
       </header>
 
-      {/* ========== HERO SECTION ========== */}
       <section
         className="relative z-10 max-w-7xl mx-auto px-4 pt-28 md:pt-36 pb-20 md:pb-28"
         style={{ animation: "fadeInUp 0.8s ease-out" }}
       >
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Texto hero */}
           <div>
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-6"
@@ -537,7 +519,6 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Info rápida com botão de localização funcional */}
             <div className="flex flex-wrap gap-6" style={{ color: "#b8d8db" }}>
               <a 
                 href="https://www.google.com/maps/place/Almeida+Studio+Pet+Care+-+Jardim+das+Am%C3%A9ricas/data=!4m7!3m6!1s0x94dce546214dbf77:0xedda7d3baa50ba4e!8m2!3d-25.4719619!4d-49.2280487!16s%2Fg%2F11ffw7grrz!19sChIJd79NIUbl3JQRTrpQqjt92u0"
@@ -559,7 +540,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Banner Hero Dinâmico com Imagens Reais */}
           <div className="relative flex justify-center h-[450px] w-full max-w-[500px] mx-auto">
             <div
               className="absolute inset-0 rounded-[40px] blur-2xl opacity-30"
@@ -571,7 +551,6 @@ export default function Home() {
             <div
               className="relative w-full h-full rounded-[40px] overflow-hidden border-4 border-[#EDC088]/30 shadow-2xl"
             >
-              {/* Slides de Imagens */}
               {[
                 "/images/pet_shih_tzu.jpg",
                 "/images/pet_poodle.jpg",
@@ -587,7 +566,6 @@ export default function Home() {
                 />
               ))}
 
-              {/* Overlay de navegação do banner */}
               <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                 {[0, 1, 2].map((i) => (
                   <div 
@@ -597,7 +575,6 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Badge sobre a imagem */}
               <div
                 className="absolute bottom-4 left-4 right-4 rounded-2xl px-4 py-3 flex items-center gap-3 z-10"
                 style={{
@@ -627,7 +604,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats */}
         <div
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 rounded-3xl p-6"
           style={{
@@ -654,7 +630,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== SOBRE SECTION (GLASSMORPISM) ========== */}
       <section
         id="sobre"
         className="relative z-10 py-16 md:py-24"
@@ -749,7 +724,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== SERVIÇOS SECTION ========== */}
       <section
         id="servicos"
         className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24"
@@ -807,7 +781,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== GALERIA SECTION ========== */}
       <section
         id="galeria"
         className="relative z-10 py-16 md:py-24"
@@ -834,7 +807,6 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            {/* Botão esquerdo */}
             <button
               onClick={() => handleGalleryScroll("left")}
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
@@ -843,7 +815,6 @@ export default function Home() {
               <ChevronLeft size={22} />
             </button>
 
-            {/* Container da galeria */}
             <div
               ref={galleryRef}
               className="flex gap-5 overflow-x-auto pb-4"
@@ -890,7 +861,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Botão direito */}
             <button
               onClick={() => handleGalleryScroll("right")}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 z-20 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
@@ -900,7 +870,6 @@ export default function Home() {
             </button>
           </div>
 
-          {/* CTA galeria */}
           <div className="text-center mt-10">
             <a
               href="https://www.instagram.com/almeidastudiopetcarejdamericas/"
@@ -919,7 +888,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== DEPOIMENTOS SECTION (ANIMADO ESTILO GOOGLE) ========== */}
       <section
         id="depoimentos"
         className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24 overflow-hidden"
@@ -941,7 +909,6 @@ export default function Home() {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Container do Carrossel */}
           <div className="flex transition-transform duration-700 ease-in-out" 
                style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}>
             {testimonials.map((t, i) => (
@@ -954,7 +921,6 @@ export default function Home() {
                     border: "1px solid rgba(237, 192, 136, 0.2)",
                   }}
                 >
-                  {/* Google Icon/Logo Simulation */}
                   <div className="absolute top-8 right-8 opacity-20">
                     <svg viewBox="0 0 24 24" width="40" height="40" fill="white">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -976,23 +942,14 @@ export default function Home() {
 
                   <div className="flex items-center gap-4">
                     <div
-                      className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl shadow-lg"
+                      className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold"
                       style={{ backgroundColor: "#EDC088", color: "#0B7C82" }}
                     >
-                      {t.name[0]}
+                      {t.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-bold text-lg text-white flex items-center gap-2">
-                        {t.name}
-                        {t.role === "Local Guide" && (
-                          <span className="text-[10px] bg-[#EDC088]/20 text-[#EDC088] px-2 py-0.5 rounded-full border border-[#EDC088]/30">
-                            Local Guide
-                          </span>
-                        )}
-                      </p>
-                      <p className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
-                        {t.date} • No Google Maps
-                      </p>
+                      <h4 className="font-bold text-white text-lg">{t.name}</h4>
+                      <p className="text-sm" style={{ color: "#EDC088" }}>{t.role} • {t.date}</p>
                     </div>
                   </div>
                 </div>
@@ -1000,7 +957,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Indicadores de Navegação */}
           <div className="flex justify-center gap-3 mt-10">
             {testimonials.map((_, i) => (
               <button
@@ -1014,7 +970,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Botões de Seta */}
           <button 
             onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
             className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 p-3 rounded-full text-white/50 hover:text-[#EDC088] transition-colors"
@@ -1030,7 +985,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== CONTATO SECTION (GLASSMORPISM) ========== */}
       <section
         id="contato"
         className="relative z-10 py-16 md:py-24"
@@ -1058,13 +1012,12 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {/* WhatsApp */}
             <a
               href="https://wa.me/554199223305"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
+              className="p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2"
+              style={{ backgroundColor: "transparent" }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center"
@@ -1085,13 +1038,12 @@ export default function Home() {
               </div>
             </a>
 
-            {/* Localização Funcional */}
             <a
               href="https://www.google.com/maps/place/Almeida+Studio+Pet+Care+-+Jardim+das+Am%C3%A9ricas/data=!4m7!3m6!1s0x94dce546214dbf77:0xedda7d3baa50ba4e!8m2!3d-25.4719619!4d-49.2280487!16s%2Fg%2F11ffw7grrz!19sChIJd79NIUbl3JQRTrpQqjt92u0"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl group"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
+              className="p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 group"
+              style={{ backgroundColor: "transparent" }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110"
@@ -1112,10 +1064,9 @@ export default function Home() {
               </div>
             </a>
 
-            {/* Redes Sociais */}
             <div
-              className="rounded-3xl p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.7)", backdropFilter: "blur(5px)" }}
+              className="p-8 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:-translate-y-2"
+              style={{ backgroundColor: "transparent" }}
             >
               <div className="flex gap-3">
                 <a
@@ -1154,13 +1105,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mapa Google Maps */}
           <div className="mb-12 rounded-3xl overflow-hidden shadow-lg border-2" style={{ borderColor: "rgba(237, 192, 136, 0.3)" }}>
             <MapView
               initialCenter={{ lat: -25.4719619, lng: -49.2280487 }}
               initialZoom={16}
               onMapReady={(map) => {
-                // Adicionar marcador com informações do estúdio
                 if (window.google && window.google.maps && window.google.maps.marker) {
                   new window.google.maps.marker.AdvancedMarkerElement({
                     map,
@@ -1173,7 +1122,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Horário de funcionamento */}
           <div
             className="rounded-3xl p-8 text-center"
             style={{ backgroundColor: "#0B7C82" }}
@@ -1201,7 +1149,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== FOOTER ========== */}
       <footer
         className="relative z-10 py-10 px-4"
         style={{
@@ -1266,7 +1213,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* ========== BOTÃO FLUTUANTE WHATSAPP ========== */}
       <a
         href="https://wa.me/554199223305"
         target="_blank"
@@ -1284,7 +1230,6 @@ export default function Home() {
         <MessageCircle size={28} color="white" />
       </a>
 
-      {/* ========== MODAL GALERIA ========== */}
       {selectedImage && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -1323,7 +1268,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* ========== ESTILOS GLOBAIS ========== */}
       <style>{`
         @keyframes slideDown {
           from { transform: translateY(-100%); opacity: 0; }
@@ -1337,7 +1281,6 @@ export default function Home() {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-8px); }
         }
-        /* Esconder scrollbar da galeria */
         div::-webkit-scrollbar { display: none; }
       `}</style>
     </div>
