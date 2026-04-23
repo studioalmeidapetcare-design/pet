@@ -273,46 +273,70 @@ export default function Home() {
           }}
         />
 
-        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE COM ANIMAÇÃO ===== */}
+        {/* ===== LOGO REAL COMO MARCA D'ÁGUA GIGANTE COM CONTORNO VIVO ===== */}
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
-          style={{ opacity: 0.18 }}
+          style={{ opacity: 0.22 }}
         >
           <style>{`
-            @keyframes logoGlow {
-              0%, 100% { filter: brightness(1.1) contrast(1.05) drop-shadow(0 0 5px rgba(237, 192, 136, 0.2)); transform: scale(1); }
-              50% { filter: brightness(1.3) contrast(1.1) drop-shadow(0 0 25px rgba(237, 192, 136, 0.5)); transform: scale(1.02); }
+            @keyframes logoTracing {
+              0% { filter: drop-shadow(0 0 0px rgba(237, 192, 136, 0)); }
+              50% { filter: drop-shadow(0 0 15px rgba(237, 192, 136, 0.6)) brightness(1.4); }
+              100% { filter: drop-shadow(0 0 0px rgba(237, 192, 136, 0)); }
             }
-            @keyframes rotateLogo {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
+            @keyframes shimmerBorder {
+              0% { transform: translate(-100%, -100%) rotate(45deg); }
+              100% { transform: translate(100%, 100%) rotate(45deg); }
             }
-            .animated-logo-bg {
-              animation: logoGlow 8s ease-in-out infinite;
-              transition: all 1s ease-in-out;
+            .logo-container-animated {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              animation: logoTracing 6s ease-in-out infinite;
+            }
+            .logo-outline-glow {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(45deg, transparent, rgba(237, 192, 136, 0.3), transparent);
+              animation: shimmerBorder 4s linear infinite;
+              mix-blend-mode: overlay;
             }
           `}</style>
-          <div className="relative flex items-center justify-center w-full h-full">
-            {/* Efeito de contorno brilhante rotativo atrás do logo */}
-            <div 
-              className="absolute rounded-full opacity-20"
-              style={{
-                width: "min(85vw, 85vh)",
-                height: "min(85vw, 85vh)",
-                border: "2px dashed #EDC088",
-                animation: "rotateLogo 60s linear infinite",
-              }}
-            />
+          <div className="logo-container-animated">
+            {/* O logo principal com efeito de brilho nas bordas */}
             <img
               src="/images/logo_transparent.png"
               alt="Almeida Studio Pet Care - Marca d'água"
-              className="animated-logo-bg"
               style={{
                 width: "min(100vw, 100vh)",
                 height: "min(100vw, 100vh)",
                 objectFit: "contain",
+                maskImage: "url('/images/logo_transparent.png')",
+                WebkitMaskImage: "url('/images/logo_transparent.png')",
+                maskSize: "contain",
+                WebkitMaskSize: "contain",
+                maskRepeat: "no-repeat",
+                WebkitMaskRepeat: "no-repeat",
               }}
             />
+            {/* Camada de brilho que percorre o logo */}
+            <div 
+              className="absolute inset-0"
+              style={{
+                width: "min(100vw, 100vh)",
+                height: "min(100vw, 100vh)",
+                maskImage: "url('/images/logo_transparent.png')",
+                WebkitMaskImage: "url('/images/logo_transparent.png')",
+                maskSize: "contain",
+                WebkitMaskSize: "contain",
+                maskRepeat: "no-repeat",
+                WebkitMaskRepeat: "no-repeat",
+              }}
+            >
+              <div className="logo-outline-glow" />
+            </div>
           </div>
         </div>
       </div>
