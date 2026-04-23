@@ -777,7 +777,7 @@ export default function Home() {
           {/* CTA galeria */}
           <div className="text-center mt-10">
             <a
-              href="https://www.instagram.com/studioalmeidapetcare/"
+              href="https://www.instagram.com/almeidastudiopetcarejdamericas/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
@@ -934,7 +934,7 @@ export default function Home() {
             >
               <div className="flex gap-3">
                 <a
-                  href="https://www.instagram.com/studioalmeidapetcare/"
+                  href="https://www.instagram.com/almeidastudiopetcarejdamericas/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
@@ -972,14 +972,14 @@ export default function Home() {
           {/* Mapa Google Maps */}
           <div className="mb-12 rounded-3xl overflow-hidden shadow-lg border-2" style={{ borderColor: "rgba(237, 192, 136, 0.3)" }}>
             <MapView
-              initialCenter={{ lat: -25.4542, lng: -49.2312 }}
+              initialCenter={{ lat: -25.4719619, lng: -49.2280487 }}
               initialZoom={16}
               onMapReady={(map) => {
                 // Adicionar marcador com informações do estúdio
                 if (window.google && window.google.maps && window.google.maps.marker) {
                   new window.google.maps.marker.AdvancedMarkerElement({
                     map,
-                    position: { lat: -25.4542, lng: -49.2312 },
+                    position: { lat: -25.4719619, lng: -49.2280487 },
                     title: "Studio Almeida Pet Care",
                   });
                 }
@@ -1052,7 +1052,7 @@ export default function Home() {
 
           <div className="flex gap-3">
             <a
-              href="https://www.instagram.com/studioalmeidapetcare/"
+              href="https://www.instagram.com/almeidastudiopetcarejdamericas/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
