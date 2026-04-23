@@ -11,19 +11,19 @@ import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin, Phone, Instagram, 
 const petGalleryImages = [
   {
     id: 1,
-    src: "/manus-storage/pet_1_enhanced_facf183e.webp",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_1.webp",
     alt: "Bulldogs Franceses Estilosos",
     title: "Bulldogs Franceses",
   },
   {
     id: 2,
-    src: "/manus-storage/pet_2_enhanced_8a6fe68f.webp",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.webp",
     alt: "Border Collie Marrom e Branco",
     title: "Border Collie",
   },
   {
     id: 3,
-    src: "/manus-storage/pet_3_enhanced_9c9017ca.webp",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_3.webp",
     alt: "Shih Tzu Glamourosa",
     title: "Shih Tzu Glamourosa",
   },
@@ -112,15 +112,15 @@ export default function Home() {
             <a href="#contato" className="hover:text-[#EDC088] transition">Contato</a>
           </nav>
 
-          <a
-            href="https://wa.me/554199223305"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#EDC088] text-[#0B7C82] px-6 py-2 rounded-full font-semibold hover:bg-[#f5d9a8] transition flex items-center gap-2"
-          >
-            <MessageCircle size={18} />
-            WhatsApp
-          </a>
+            <a
+              href="https://wa.me/5541999223305"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#EDC088] text-[#0B7C82] px-6 py-2 rounded-full font-semibold hover:bg-[#f5d9a8] transition flex items-center gap-2"
+            >
+              <MessageCircle size={18} />
+              WhatsApp
+            </a>
         </div>
       </header>
 
@@ -135,14 +135,14 @@ export default function Home() {
               Há mais de 8 anos transformando pets em urshinhos felizes com banho, tosa e muito amor. Ambiente quentinho, seguro e produtos de qualidade.
             </p>
             <div className="flex gap-4">
-              <a
-                href="https://wa.me/554199223305"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#EDC088] text-[#0B7C82] px-8 py-3 rounded-full font-bold hover:bg-[#f5d9a8] transition"
-              >
-                Agendar Agora
-              </a>
+            <a
+              href="https://wa.me/5541999223305"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#EDC088] text-[#0B7C82] px-8 py-3 rounded-full font-bold hover:bg-[#f5d9a8] transition"
+            >
+              Agendar Agora
+            </a>
               <button className="border-2 border-[#EDC088] text-[#EDC088] px-8 py-3 rounded-full font-bold hover:bg-[#EDC088] hover:text-[#0B7C82] transition">
                 Saiba Mais
               </button>
@@ -154,7 +154,7 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={20} />
-                <span>(41) 99223-305</span>
+                <span>(41) 9922-3305</span>
               </div>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function Home() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#EDC088] to-[#F5E6D3] rounded-[40px] opacity-20 blur-xl" />
             <img
-              src="/manus-storage/pet_2_enhanced_8a6fe68f.webp"
+              src="https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.webp"
               alt="Studio Almeida Pet Care"
               className="relative rounded-[40px] shadow-2xl w-full h-auto object-cover"
             />
@@ -289,7 +289,7 @@ export default function Home() {
           <h3 className="text-4xl font-bold text-white mb-12 text-center">Entre em Contato</h3>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <a
-              href="https://wa.me/554199223305"
+              href="https://wa.me/5541999223305"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center gap-4 p-6 rounded-2xl hover:bg-white/10 transition"
@@ -297,7 +297,7 @@ export default function Home() {
               <MessageCircle size={40} className="text-[#EDC088]" />
               <div>
                 <h4 className="text-[#EDC088] font-bold mb-2">WhatsApp</h4>
-                <p className="text-[#F5E6D3]">(41) 99223-305</p>
+                <p className="text-[#F5E6D3]">(41) 9922-3305</p>
               </div>
             </a>
 
@@ -339,7 +339,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/554199223305"
+        href="https://wa.me/5541999223305"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center justify-center"
