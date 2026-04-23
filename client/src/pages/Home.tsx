@@ -1,436 +1,350 @@
-import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Phone, Instagram, Facebook, MessageCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin, Phone, Instagram, Facebook } from "lucide-react";
 
 /**
- * Studio Almeida Pet Care - Homepage
- * 
- * Design Philosophy: Warm & Playful Pet Care
- * - Caloroso e acolhedor: transmite confiança e carinho
- * - Lúdico mas profissional: celebra a alegria dos pets
- * - Orgânico e natural: formas arredondadas, transições suaves
- * - Tipografia: Poppins Bold para títulos, Inter para corpo, Playfair Display para destaques
- * - Paleta: Laranja/Coral (#FF6B4A), Creme (#F5E6D3), Verde Menta (#A8D5BA), Roxo Claro (#D4A5D4)
+ * Design Philosophy: Luxury Pet Care - Elegant Teal & Gold
+ * Color Palette: Teal (#0B7C82), Gold (#EDC088), Cream (#F5E6D3)
+ * Typography: Monterey BT (script), Shadowdown BT (body)
+ * Style: Sophisticated, premium, professional
  */
 
-export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
+const petGalleryImages = [
+  {
+    id: 1,
+    src: "/manus-storage/pet_1_enhanced_1c86bd60.webp",
+    alt: "Bulldogs Franceses Estilosos",
+    title: "Bulldogs Franceses",
+  },
+  {
+    id: 2,
+    src: "/manus-storage/pet_2_enhanced_7622688a.webp",
+    alt: "Border Collie Marrom e Branco",
+    title: "Border Collie",
+  },
+  {
+    id: 3,
+    src: "/manus-storage/pet_3_enhanced_4c474cbe.webp",
+    alt: "Shih Tzu Glamourosa",
+    title: "Shih Tzu Glamourosa",
+  },
+];
 
+interface SelectedImage {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+export default function Home() {
+  const [selectedImage, setSelectedImage] = useState<SelectedImage | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-scroll da galeria
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const startAutoScroll = () => {
+      autoScrollRef.current = setInterval(() => {
+        if (galleryRef.current) {
+          const scrollAmount = 320; // width + gap
+          galleryRef.current.scrollLeft += scrollAmount;
+        }
+      }, 3000);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    startAutoScroll();
+    return () => {
+      if (autoScrollRef.current !== null) clearInterval(autoScrollRef.current);
+    };
   }, []);
 
-  const whatsappNumber = "4199223305";
-  const whatsappMessage = "Olá! Gostaria de agendar um banho e tosa para meu pet no Studio Almeida Pet Care.";
-  const whatsappLink = `https://wa.me/55${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const handleGalleryScroll = (direction: "left" | "right") => {
+    if (galleryRef.current) {
+      const scrollAmount = 320;
+      if (direction === "left") {
+        galleryRef.current.scrollLeft -= scrollAmount;
+      } else {
+        galleryRef.current.scrollLeft += scrollAmount;
+      }
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      {/* Animated Background */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-100 to-transparent rounded-full blur-3xl opacity-40 animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-purple-100 to-transparent rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-green-100 to-transparent rounded-full blur-3xl opacity-30 animate-pulse" style={{ animationDelay: "2s" }}></div>
+    <div className="min-h-screen bg-gradient-to-b from-[#0B7C82] to-[#0a5f65]">
+      {/* Watermark Background */}
+      <div className="fixed inset-0 opacity-5 pointer-events-none">
+        <div className="absolute inset-0 bg-repeat" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ctext x='50' y='100' font-size='40' fill='white' opacity='0.3' text-anchor='middle'%3EAlmeida%3C/text%3E%3C/svg%3E")`,
+          backgroundSize: "200px 200px",
+        }} />
       </div>
 
-      {/* Navigation */}
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-lg" : "bg-transparent"}`}>
-        <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-lg">
-              🐾
+      {/* Header/Navigation */}
+      <header className="relative z-10 bg-[#0B7C82] shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full bg-[#EDC088] flex items-center justify-center">
+              <span className="text-[#0B7C82] font-bold text-xl">A</span>
             </div>
-            <span className="font-bold text-xl text-gray-800">Studio Almeida</span>
+            <div>
+              <h1 className="text-white font-bold text-xl">Almeida</h1>
+              <p className="text-[#EDC088] text-xs">Studio Pet Care</p>
+            </div>
           </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#sobre" className="text-gray-700 hover:text-orange-500 transition">Sobre</a>
-            <a href="#servicos" className="text-gray-700 hover:text-orange-500 transition">Serviços</a>
-            <a href="#galeria" className="text-gray-700 hover:text-orange-500 transition">Galeria</a>
-            <a href="#contato" className="text-gray-700 hover:text-orange-500 transition">Contato</a>
-          </div>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
+
+          <nav className="hidden md:flex gap-8 text-white">
+            <a href="#sobre" className="hover:text-[#EDC088] transition">Sobre</a>
+            <a href="#servicos" className="hover:text-[#EDC088] transition">Serviços</a>
+            <a href="#galeria" className="hover:text-[#EDC088] transition">Galeria</a>
+            <a href="#contato" className="hover:text-[#EDC088] transition">Contato</a>
+          </nav>
+
+          <a
+            href="https://wa.me/554199223305"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#EDC088] text-[#0B7C82] px-6 py-2 rounded-full font-semibold hover:bg-[#f5d9a8] transition flex items-center gap-2"
+          >
+            <MessageCircle size={18} />
             WhatsApp
           </a>
         </div>
-      </nav>
+      </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 relative">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="display-medium text-gray-900">
-                Seu Pet Merece <span className="text-orange-500">Cuidado de Verdade</span>
-              </h1>
-              <p className="body-large text-gray-700">
-                Há mais de 8 anos transformando pets em urshinhos felizes com banho, tosa e muito amor. Ambiente quentinho, seguro e produtos de qualidade.
-              </p>
-              <div className="flex gap-4 pt-4">
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <Button className="btn-primary">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Agendar Agora
-                  </Button>
-                </a>
-                <a href="#sobre">
-                  <Button variant="outline" className="px-6 py-3 rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50">
-                    Saiba Mais
-                  </Button>
-                </a>
-              </div>
-              <div className="flex gap-6 pt-6">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-orange-500" />
-                  <span className="text-sm text-gray-700">Jd. das Américas</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-orange-500" />
-                  <span className="text-sm text-gray-700">(41) 99223-305</span>
-                </div>
-              </div>
-            </div>
-            <div className="relative h-96 md:h-full">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663561824623/SPhYGz8CcxhVjwHBF5eAWn/hero-banner-gdEWtt4XN6XLcMxNcmPhLV.webp"
-                alt="Hero Banner"
-                className="w-full h-full object-cover rounded-3xl shadow-2xl"
-              />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-green-300 to-green-500 rounded-full blur-2xl opacity-30"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sobre Section */}
-      <section id="sobre" className="py-20 bg-gradient-to-r from-orange-50 via-white to-purple-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="heading-1 text-gray-900 mb-4">Quem Somos</h2>
-            <p className="body-large text-gray-700 max-w-2xl mx-auto">
-              Somos apaixonados por pets e dedicados a oferecer o melhor cuidado possível
+      <section className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "Monterey BT, cursive" }}>
+              Seu Pet Merece Cuidado de Verdade
+            </h2>
+            <p className="text-lg text-[#F5E6D3] mb-8">
+              Há mais de 8 anos transformando pets em urshinhos felizes com banho, tosa e muito amor. Ambiente quentinho, seguro e produtos de qualidade.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card-warm">
-              <div className="text-4xl mb-4">✨</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Trajetória</h3>
-              <p className="text-gray-700">
-                Com mais de 8 anos de confiança e experiência, o Studio Almeida Pet Care se consolidou como referência em cuidado profissional e afetuoso para pets no Jardim das Américas.
-              </p>
-            </div>
-
-            <div className="card-warm">
-              <div className="text-4xl mb-4">❤️</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Nossa Missão</h3>
-              <p className="text-gray-700">
-                Transformar a experiência de banho e tosa em um momento de bem-estar, conforto e alegria para cada pet que chega até nós.
-              </p>
-            </div>
-
-            <div className="card-warm">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Compromisso</h3>
-              <p className="text-gray-700">
-                Ambiente quentinho e seguro, produtos de qualidade, atenção individual e respeito em cada detalhe do cuidado com seu bichinho.
-              </p>
-            </div>
-          </div>
-
-          {/* Equipe */}
-          <div className="mt-16 pt-16 border-t-2 border-orange-200">
-            <h3 className="heading-2 text-gray-900 mb-8 text-center">Conheça Nossa Equipe</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-2xl">
-                  👨‍💼
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900">Roberson</h4>
-                  <p className="text-gray-600">Apaixonado por pets e especialista em banho e tosa</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-2xl">
-                  👩‍💼
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900">Equipe Dedicada</h4>
-                  <p className="text-gray-600">Profissionais com amor e respeito por cada animal</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Serviços Section */}
-      <section id="servicos" className="py-20">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="heading-1 text-gray-900 mb-4">Nossos Serviços</h2>
-            <p className="body-large text-gray-700 max-w-2xl mx-auto">
-              Oferecemos serviços completos de banho e tosa com muito carinho e cuidado
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card-warm">
-              <div className="text-5xl mb-4">🛁</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Banho Higienizador</h3>
-              <p className="text-gray-700 mb-4">
-                Banho quentinho com produtos de qualidade que garantem limpeza e saúde para a pele e pelos do seu pet.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li>✓ Produtos pet-safe</li>
-                <li>✓ Ambiente aquecido</li>
-                <li>✓ Secagem profissional</li>
-              </ul>
-            </div>
-
-            <div className="card-warm">
-              <div className="text-5xl mb-4">✂️</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Tosa Personalizada</h3>
-              <p className="text-gray-700 mb-4">
-                Transformamos seu pet em um ursinho fofo com tosa personalizada de acordo com a raça e preferência.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li>✓ Tosa higiênica</li>
-                <li>✓ Tosa estética</li>
-                <li>✓ Estilos personalizados</li>
-              </ul>
-            </div>
-
-            <div className="card-warm">
-              <div className="text-5xl mb-4">📅</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Cronograma Capilar</h3>
-              <p className="text-gray-700 mb-4">
-                Acompanhamento regular para manter a saúde e beleza dos pelos do seu pet em dia.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li>✓ Plano mensal</li>
-                <li>✓ Cuidados específicos</li>
-                <li>✓ Acompanhamento contínuo</li>
-              </ul>
-            </div>
-
-            <div className="card-warm">
-              <div className="text-5xl mb-4">🏥</div>
-              <h3 className="heading-2 text-gray-900 mb-3">Cuidado Especial</h3>
-              <p className="text-gray-700 mb-4">
-                Atenção individual para cada animalzinho, com amor e respeito em cada detalhe.
-              </p>
-              <ul className="space-y-2 text-gray-700">
-                <li>✓ Ambiente seguro</li>
-                <li>✓ Manejo gentil</li>
-                <li>✓ Produtos hipoalergênicos</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Galeria Section */}
-      <section id="galeria" className="py-20 bg-gradient-to-r from-green-50 via-white to-orange-50">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="heading-1 text-gray-900 mb-4">Galeria de Resultados</h2>
-            <p className="body-large text-gray-700 max-w-2xl mx-auto">
-              Veja alguns dos nossos trabalhos e como transformamos pets em urshinhos felizes
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
-              <img
-                src="/manus-storage/google_maps_pet_1_61dcfd31.webp"
-                alt="Shih Tzu branco com laço preto"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold text-sm">Shih Tzu Elegante</p>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
-              <img
-                src="/manus-storage/google_maps_pet_2_07434ae3.webp"
-                alt="Bulldog branco e preto com gravata"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold text-sm">Bulldog Estiloso</p>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
-              <img
-                src="/manus-storage/google_maps_pet_3_427ee274.webp"
-                alt="Schnauzer com coleira amarela"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold text-sm">Schnauzer Feliz</p>
-              </div>
-            </div>
-
-            <div className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 h-80">
-              <img
-                src="/manus-storage/google_maps_pet_4_d3c622ee.webp"
-                alt="Shih Tzu branco com laço rosa e cristais"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
-                <p className="text-white font-semibold text-sm">Shih Tzu Glamourosa</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contato Section */}
-      <section id="contato" className="py-20">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="heading-1 text-gray-900 mb-4">Entre em Contato</h2>
-              <p className="body-large text-gray-700">
-                Agende agora mesmo o banho e tosa do seu pet
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="card-warm text-center">
-                <MessageCircle className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-                <h3 className="heading-2 text-gray-900 mb-2">WhatsApp</h3>
-                <p className="text-gray-700">(41) 99223-305</p>
+            <div className="flex gap-4">
+              <a
+                href="https://wa.me/554199223305"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#EDC088] text-[#0B7C82] px-8 py-3 rounded-full font-bold hover:bg-[#f5d9a8] transition"
+              >
+                Agendar Agora
               </a>
-
-              <div className="card-warm text-center">
-                <MapPin className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-                <h3 className="heading-2 text-gray-900 mb-2">Localização</h3>
-                <p className="text-gray-700">Rua Dr. Joaquim do Amaral, 1174<br />Jd. das Américas - Curitiba</p>
+              <button className="border-2 border-[#EDC088] text-[#EDC088] px-8 py-3 rounded-full font-bold hover:bg-[#EDC088] hover:text-[#0B7C82] transition">
+                Saiba Mais
+              </button>
+            </div>
+            <div className="flex gap-8 mt-8 text-[#F5E6D3]">
+              <div className="flex items-center gap-2">
+                <MapPin size={20} />
+                <span>Jd. das Américas</span>
               </div>
+              <div className="flex items-center gap-2">
+                <Phone size={20} />
+                <span>(41) 99223-305</span>
+              </div>
+            </div>
+          </div>
 
-              <div className="card-warm text-center">
-                <Clock className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-                <h3 className="heading-2 text-gray-900 mb-2">Horário</h3>
-                <p className="text-gray-700">Terça a Sexta: 9h às 15h<br />Sábado: 9h às 15h</p>
+          <div className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-[#EDC088] to-[#F5E6D3] rounded-[40px] opacity-20 blur-xl" />
+            <img
+              src="/manus-storage/pet_2_enhanced_7622688a.webp"
+              alt="Studio Almeida Pet Care"
+              className="relative rounded-[40px] shadow-2xl w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="sobre" className="relative z-10 bg-[#F5E6D3] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-4xl font-bold text-[#0B7C82] mb-12 text-center">Quem Somos</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-[#EDC088] rounded-full flex items-center justify-center mb-6">
+                <span className="text-2xl">🏆</span>
+              </div>
+              <h4 className="text-xl font-bold text-[#0B7C82] mb-4">8+ Anos de Experiência</h4>
+              <p className="text-gray-600">Transformando pets em urshinhos felizes com dedicação e carinho desde 2016.</p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-[#EDC088] rounded-full flex items-center justify-center mb-6">
+                <span className="text-2xl">❤️</span>
+              </div>
+              <h4 className="text-xl font-bold text-[#0B7C82] mb-4">Amor pelos Pets</h4>
+              <p className="text-gray-600">Cada pet é tratado como família. Ambiente seguro, quentinho e com produtos de qualidade.</p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
+              <div className="w-16 h-16 bg-[#EDC088] rounded-full flex items-center justify-center mb-6">
+                <span className="text-2xl">⭐</span>
+              </div>
+              <h4 className="text-xl font-bold text-[#0B7C82] mb-4">Profissionalismo</h4>
+              <p className="text-gray-600">Equipe treinada e dedicada ao bem-estar e beleza do seu companheiro peludo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="servicos" className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <h3 className="text-4xl font-bold text-white mb-12 text-center">Nossos Serviços</h3>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { icon: "🛁", title: "Banho", desc: "Banho completo com produtos premium" },
+            { icon: "✂️", title: "Tosa", desc: "Tosa estética e personalizada" },
+            { icon: "📅", title: "Cronograma", desc: "Cronograma capilar especializado" },
+            { icon: "💆", title: "Cuidado Especial", desc: "Tratamentos especiais e hidratação" },
+          ].map((service, idx) => (
+            <div
+              key={idx}
+              className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-[#EDC088]/30 hover:border-[#EDC088] transition text-center"
+            >
+              <div className="text-5xl mb-4">{service.icon}</div>
+              <h4 className="text-xl font-bold text-[#EDC088] mb-2">{service.title}</h4>
+              <p className="text-[#F5E6D3]">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="galeria" className="relative z-10 bg-[#F5E6D3] py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-4xl font-bold text-[#0B7C82] mb-4 text-center">Nossos Resultados</h3>
+          <p className="text-center text-gray-600 mb-12">Veja alguns dos nossos trabalhos e como transformamos pets em urshinhos felizes</p>
+
+          <div className="relative">
+            {/* Gallery Container */}
+            <div
+              ref={galleryRef}
+              className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              {/* Duplicate images for infinite scroll effect */}
+              {[...petGalleryImages, ...petGalleryImages, ...petGalleryImages].map((image, idx) => (
+                <div
+                  key={idx}
+                  className="flex-shrink-0 w-80 h-80 snap-center cursor-pointer group"
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <div className="relative w-full h-full rounded-[40px] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                      <p className="text-white font-bold text-lg">{image.title}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => handleGalleryScroll("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 bg-[#0B7C82] text-white p-3 rounded-full hover:bg-[#EDC088] hover:text-[#0B7C82] transition z-20"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={() => handleGalleryScroll("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 bg-[#0B7C82] text-white p-3 rounded-full hover:bg-[#EDC088] hover:text-[#0B7C82] transition z-20"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contato" className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+        <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-[#EDC088]/30">
+          <h3 className="text-4xl font-bold text-white mb-12 text-center">Entre em Contato</h3>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <a
+              href="https://wa.me/554199223305"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-4 p-6 rounded-2xl hover:bg-white/10 transition"
+            >
+              <MessageCircle size={40} className="text-[#EDC088]" />
+              <div>
+                <h4 className="text-[#EDC088] font-bold mb-2">WhatsApp</h4>
+                <p className="text-[#F5E6D3]">(41) 99223-305</p>
+              </div>
+            </a>
+
+            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl hover:bg-white/10 transition">
+              <MapPin size={40} className="text-[#EDC088]" />
+              <div>
+                <h4 className="text-[#EDC088] font-bold mb-2">Localização</h4>
+                <p className="text-[#F5E6D3]">Jd. das Américas, Curitiba</p>
               </div>
             </div>
 
-            {/* Redes Sociais */}
-            <div className="bg-gradient-to-r from-orange-100 to-purple-100 rounded-3xl p-8 text-center">
-              <h3 className="heading-2 text-gray-900 mb-6">Siga Nossas Redes Sociais</h3>
-              <div className="flex justify-center gap-6">
+            <div className="flex flex-col items-center gap-4 p-6 rounded-2xl hover:bg-white/10 transition">
+              <div className="flex gap-4">
                 <a
-                  href="https://www.instagram.com/almeidastudiopetcarejdamericas/"
+                  href="https://instagram.com/almeidastudiopetcarejdamericas"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-400 to-pink-600 flex items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:scale-110"
+                  className="text-[#EDC088] hover:text-[#F5E6D3] transition"
                 >
-                  <Instagram className="w-6 h-6" />
+                  <Instagram size={32} />
                 </a>
                 <a
-                  href="https://www.facebook.com/almeidapets.bnhtsa"
+                  href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:scale-110"
+                  className="text-[#EDC088] hover:text-[#F5E6D3] transition"
                 >
-                  <Facebook className="w-6 h-6" />
+                  <Facebook size={32} />
                 </a>
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center text-white hover:shadow-lg transition-all duration-300 hover:scale-110"
-                >
-                  <MessageCircle className="w-6 h-6" />
-                </a>
+              </div>
+              <div>
+                <h4 className="text-[#EDC088] font-bold mb-2">Redes Sociais</h4>
+                <p className="text-[#F5E6D3]">Nos siga!</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* WhatsApp Floating Button */}
+      {/* Floating WhatsApp Button */}
       <a
-        href={whatsappLink}
+        href="https://wa.me/554199223305"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-white shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 z-40"
+        className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 flex items-center justify-center"
       >
-        <MessageCircle className="w-8 h-8" />
+        <MessageCircle size={28} />
       </a>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold">
-                  🐾
-                </div>
-                <span className="font-bold text-lg">Studio Almeida</span>
-              </div>
-              <p className="text-gray-400">
-                Cuidando de pets com amor desde 2016
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Links Rápidos</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#sobre" className="hover:text-orange-500 transition">Sobre</a></li>
-                <li><a href="#servicos" className="hover:text-orange-500 transition">Serviços</a></li>
-                <li><a href="#galeria" className="hover:text-orange-500 transition">Galeria</a></li>
-                <li><a href="#contato" className="hover:text-orange-500 transition">Contato</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Contato</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  (41) 99223-305
-                </li>
-                <li className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  Jd. das Américas - Curitiba
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2026 Studio Almeida Pet Care. Todos os direitos reservados. 🐾</p>
+      {/* Modal for Gallery Images */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
+          <div className="relative max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 text-white hover:text-[#EDC088] transition"
+            >
+              <X size={32} />
+            </button>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="w-full h-auto rounded-3xl shadow-2xl"
+            />
+            <h4 className="text-center text-white text-2xl font-bold mt-6">{selectedImage.title}</h4>
           </div>
         </div>
-      </footer>
+      )}
     </div>
-  );
-}
-
-// Clock icon component
-function Clock({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 6 12 12 16 14"></polyline>
-    </svg>
   );
 }
