@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, ReactElement } from "react";
 import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin, Phone, Instagram, Facebook } from "lucide-react";
 
 /**
@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0B7C82] to-[#0a5f65]">
-      {/* Animated Background with Floating Elements */}
+      {/* Animated Background with Giant Logo Watermark */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B7C82] via-[#0a5f65] to-[#073d42]" />
@@ -81,12 +81,23 @@ export default function Home() {
         <div className="absolute top-40 right-10 w-72 h-72 bg-[#F5E6D3] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[#EDC088] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '4s' }} />
         
-        {/* Watermark Background */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-repeat" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ctext x='50' y='100' font-size='40' fill='white' opacity='0.3' text-anchor='middle'%3EAlmeida%3C/text%3E%3C/svg%3E")`,
-            backgroundSize: "200px 200px",
-          }} />
+        {/* Giant Logo Watermark */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.08] pointer-events-none">
+          <svg viewBox="0 0 200 200" className="w-full h-full max-w-4xl" xmlns="http://www.w3.org/2000/svg">
+            {/* Circle border */}
+            <circle cx="100" cy="100" r="95" fill="none" stroke="#EDC088" strokeWidth="2"/>
+            {/* Shih Tzu silhouette */}
+            <g fill="#EDC088" opacity="0.9">
+              <ellipse cx="100" cy="70" rx="12" ry="14"/>
+              <path d="M 95 65 Q 90 60 85 62 Q 88 55 95 55 Q 102 55 105 62 Q 100 60 95 65" fill="#EDC088"/>
+              <ellipse cx="100" cy="95" rx="20" ry="25"/>
+              <ellipse cx="85" cy="105" rx="8" ry="12"/>
+              <ellipse cx="115" cy="105" rx="8" ry="12"/>
+            </g>
+            {/* Text */}
+            <text x="100" y="145" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#EDC088" fontFamily="serif">Almeida</text>
+            <text x="100" y="160" fontSize="10" textAnchor="middle" fill="#EDC088" fontFamily="serif">STUDIO PET CARE</text>
+          </svg>
         </div>
       </div>
 
@@ -198,25 +209,31 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-4xl font-bold text-[#0B7C82] mb-12 text-center">Quem Somos</h3>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
-              <div className="w-16 h-16 bg-[#EDC088] rounded-full flex items-center justify-center mb-6">
-                <span className="text-2xl">🏆</span>
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#EDC088] to-[#0B7C82] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                </svg>
               </div>
               <h4 className="text-xl font-bold text-[#0B7C82] mb-4">8+ Anos de Experiência</h4>
               <p className="text-gray-600">Transformando pets em urshinhos felizes com dedicação e carinho desde 2016.</p>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
-              <div className="w-16 h-16 bg-[#EDC088] rounded-full flex items-center justify-center mb-6">
-                <span className="text-2xl">❤️</span>
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#EDC088] to-[#0B7C82] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
               </div>
               <h4 className="text-xl font-bold text-[#0B7C82] mb-4">Amor pelos Pets</h4>
               <p className="text-gray-600">Cada pet é tratado como família. Ambiente seguro, quentinho e com produtos de qualidade.</p>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition">
-              <div className="w-16 h-16 bg-[#EDC088] rounded-full flex items-center justify-center mb-6">
-                <span className="text-2xl">⭐</span>
+            <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition transform hover:scale-105 duration-300">
+              <div className="w-16 h-16 bg-gradient-to-br from-[#EDC088] to-[#0B7C82] rounded-full flex items-center justify-center mb-6 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
               </div>
               <h4 className="text-xl font-bold text-[#0B7C82] mb-4">Profissionalismo</h4>
               <p className="text-gray-600">Equipe treinada e dedicada ao bem-estar e beleza do seu companheiro peludo.</p>
@@ -232,20 +249,28 @@ export default function Home() {
         <h3 className="text-4xl font-bold text-white mb-12 text-center">Nossos Serviços</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: "🛁", title: "Banho", desc: "Banho completo com produtos premium" },
-            { icon: "✂️", title: "Tosa", desc: "Tosa estética e personalizada" },
-            { icon: "📅", title: "Cronograma", desc: "Cronograma capilar especializado" },
-            { icon: "💆", title: "Cuidado Especial", desc: "Tratamentos especiais e hidratação" },
-          ].map((service, idx) => (
-            <div
-              key={idx}
-              className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-[#EDC088]/30 hover:border-[#EDC088] transition text-center"
-            >
-              <div className="text-5xl mb-4">{service.icon}</div>
-              <h4 className="text-xl font-bold text-[#EDC088] mb-2">{service.title}</h4>
-              <p className="text-[#F5E6D3]">{service.desc}</p>
-            </div>
-          ))}
+            { icon: "water", title: "Banho", desc: "Banho completo com produtos premium" },
+            { icon: "scissors", title: "Tosa", desc: "Tosa estética e personalizada" },
+            { icon: "calendar", title: "Cronograma", desc: "Cronograma capilar especializado" },
+            { icon: "spa", title: "Cuidado Especial", desc: "Tratamentos especiais e hidratação" },
+          ].map((service, idx) => {
+            const iconMap: Record<string, ReactElement> = {
+              water: <svg className="w-12 h-12 text-[#EDC088]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/></svg>,
+              scissors: <svg className="w-12 h-12 text-[#EDC088]" fill="currentColor" viewBox="0 0 24 24"><path d="M6 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.66 0-3 1.34-3 3 0 1.31.84 2.41 2 2.85V21h2v-4.15c1.16-.44 2-1.54 2-2.85 0-1.66-1.34-3-3-3zm12-5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.66 0-3 1.34-3 3 0 1.31.84 2.41 2 2.85V21h2v-4.15c1.16-.44 2-1.54 2-2.85 0-1.66-1.34-3-3-3z"/></svg>,
+              calendar: <svg className="w-12 h-12 text-[#EDC088]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5H7v5h7v-5z"/></svg>,
+              spa: <svg className="w-12 h-12 text-[#EDC088]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>,
+            };
+            return (
+              <div
+                key={idx}
+                className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-[#EDC088]/30 hover:border-[#EDC088] transition text-center transform hover:scale-105 duration-300"
+              >
+                <div className="flex justify-center mb-4">{iconMap[service.icon]}</div>
+                <h4 className="text-xl font-bold text-[#EDC088] mb-2">{service.title}</h4>
+                <p className="text-[#F5E6D3]">{service.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
