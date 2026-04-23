@@ -1005,8 +1005,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== FOOTER SECTION (GLASSMORPISM) ========== */}
-      <footer
+      {/* ========== CONTATO SECTION (GLASSMORPISM) ========== */}
+      <section
         id="contato"
         className="relative z-10 py-16 md:py-24"
         style={{ 
@@ -1014,7 +1014,8 @@ export default function Home() {
           backdropFilter: "blur(12px)",
           borderTop: "1px solid rgba(237, 192, 136, 0.3)"
         }}
-      >     <div className="max-w-7xl mx-auto px-4">
+      >
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
             <p
               className="text-sm font-semibold tracking-widest uppercase mb-3"
