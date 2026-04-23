@@ -250,14 +250,15 @@ export default function Home() {
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{ opacity: 0.15 }}
         >
-          <img
-            src="/images/logo.png"
+            <img
+            src="/images/logo_clean.png"
             alt="Almeida Studio Pet Care - Marca d'água"
             style={{
               width: "min(100vw, 100vh)",
               height: "min(100vw, 100vh)",
               objectFit: "contain",
-              filter: "brightness(1.2) contrast(1.1)",
+              filter: "brightness(1.1) contrast(1.05)",
+              opacity: 0.8,
             }}
           />
         </div>
@@ -971,14 +972,14 @@ export default function Home() {
           {/* Mapa Google Maps */}
           <div className="mb-12 rounded-3xl overflow-hidden shadow-lg border-2" style={{ borderColor: "rgba(237, 192, 136, 0.3)" }}>
             <MapView
-              initialCenter={{ lat: -25.4290, lng: -49.2671 }}
+              initialCenter={{ lat: -25.4542, lng: -49.2312 }}
               initialZoom={16}
               onMapReady={(map) => {
                 // Adicionar marcador com informações do estúdio
                 if (window.google && window.google.maps && window.google.maps.marker) {
                   new window.google.maps.marker.AdvancedMarkerElement({
                     map,
-                    position: { lat: -25.4290, lng: -49.2671 },
+                    position: { lat: -25.4542, lng: -49.2312 },
                     title: "Studio Almeida Pet Care",
                   });
                 }

@@ -95,15 +95,22 @@ const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
 function loadMapScript() {
   return new Promise(resolve => {
     const script = document.createElement("script");
-    script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry`;
+    // If API_KEY is missing, we use a public fallback or at least try to load the script
+    const baseUrl = API_KEY ? `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}` : "https://maps.googleapis.com/maps/api/js";
+    script.src = `${baseUrl}&v=weekly&libraries=marker,places,geocoding,geometry`;
     script.async = true;
     script.crossOrigin = "anonymous";
     script.onload = () => {
       resolve(null);
-      script.remove(); // Clean up immediately
     };
     script.onerror = () => {
       console.error("Failed to load Google Maps script");
+      // Try standard Google Maps CDN as last resort
+      const fallback = document.createElement("script");
+      fallback.src = "https://maps.googleapis.com/maps/api/js?v=weekly&libraries=marker,places,geocoding,geometry";
+      fallback.async = true;
+      fallback.onload = () => resolve(null);
+      document.head.appendChild(fallback);
     };
     document.head.appendChild(script);
   });
@@ -118,7 +125,7 @@ interface MapViewProps {
 
 export function MapView({
   className,
-  initialCenter = { lat: 37.7749, lng: -122.4194 },
+  initialCenter = { lat: -25.4542, lng: -49.2312 }, // Jardim das Américas, Curitiba
   initialZoom = 12,
   onMapReady,
 }: MapViewProps) {
