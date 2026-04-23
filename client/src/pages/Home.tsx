@@ -71,17 +71,30 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0B7C82] to-[#0a5f65]">
-      {/* Watermark Background */}
-      <div className="fixed inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0 bg-repeat" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ctext x='50' y='100' font-size='40' fill='white' opacity='0.3' text-anchor='middle'%3EAlmeida%3C/text%3E%3C/svg%3E")`,
-          backgroundSize: "200px 200px",
-        }} />
+      {/* Animated Background with Floating Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B7C82] via-[#0a5f65] to-[#073d42]" />
+        
+        {/* Animated Circles */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#EDC088] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" />
+        <div className="absolute top-40 right-10 w-72 h-72 bg-[#F5E6D3] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[#EDC088] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse" style={{ animationDelay: '4s' }} />
+        
+        {/* Watermark Background */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 bg-repeat" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ctext x='50' y='100' font-size='40' fill='white' opacity='0.3' text-anchor='middle'%3EAlmeida%3C/text%3E%3C/svg%3E")`,
+            backgroundSize: "200px 200px",
+          }} />
+        </div>
       </div>
 
-      {/* Header/Navigation */}
-      <header className="relative z-10 bg-[#0B7C82] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
+      {/* Header/Navigation - Fixed */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0B7C82]/95 backdrop-blur-md shadow-lg border-b border-[#EDC088]/20" style={{
+        animation: 'slideDown 0.6s ease-out'
+      }}>
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full bg-[#EDC088] flex items-center justify-center">
               <span className="text-[#0B7C82] font-bold text-xl">A</span>
@@ -112,7 +125,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <section className="relative z-10 max-w-7xl mx-auto px-4 pt-32 md:pt-40 pb-16 md:pb-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: "Monterey BT, cursive" }}>
@@ -158,7 +171,9 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="sobre" className="relative z-10 bg-[#F5E6D3] py-16 md:py-24">
+      <section id="sobre" className="relative z-10 bg-[#F5E6D3] py-16 md:py-24" style={{
+        animation: 'fadeInUp 0.8s ease-out'
+      }}>
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-4xl font-bold text-[#0B7C82] mb-12 text-center">Quem Somos</h3>
           <div className="grid md:grid-cols-3 gap-8">
@@ -190,7 +205,9 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="servicos" className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <section id="servicos" className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24" style={{
+        animation: 'fadeInUp 0.8s ease-out 0.2s both'
+      }}>
         <h3 className="text-4xl font-bold text-white mb-12 text-center">Nossos Serviços</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
@@ -212,7 +229,9 @@ export default function Home() {
       </section>
 
       {/* Gallery Section */}
-      <section id="galeria" className="relative z-10 bg-[#F5E6D3] py-16 md:py-24">
+      <section id="galeria" className="relative z-10 bg-[#F5E6D3] py-16 md:py-24" style={{
+        animation: 'fadeInUp 0.8s ease-out 0.4s both'
+      }}>
         <div className="max-w-7xl mx-auto px-4">
           <h3 className="text-4xl font-bold text-[#0B7C82] mb-4 text-center">Nossos Resultados</h3>
           <p className="text-center text-gray-600 mb-12">Veja alguns dos nossos trabalhos e como transformamos pets em urshinhos felizes</p>
@@ -263,7 +282,9 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contato" className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24">
+      <section id="contato" className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24" style={{
+        animation: 'fadeInUp 0.8s ease-out 0.6s both'
+      }}>
         <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-[#EDC088]/30">
           <h3 className="text-4xl font-bold text-white mb-12 text-center">Entre em Contato</h3>
           <div className="grid md:grid-cols-3 gap-8 text-center">
