@@ -1044,11 +1044,16 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.5)" }}>
-            © {new Date().getFullYear()} Almeida Studio Pet Care. Todos os direitos reservados.
-            <br />
-            Jardim das Américas, Curitiba – PR
-          </p>
+          <div className="text-center">
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+              © {new Date().getFullYear()} Almeida Studio Pet Care. Todos os direitos reservados.
+              <br />
+              CNPJ: 53.190.485/0001-90 | Jardim das Américas, Curitiba – PR
+            </p>
+            <p className="text-[10px] mt-2" style={{ color: "rgba(255,255,255,0.3)" }}>
+              Design by <a href="https://jbrasillabs.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-[#EDC088] transition-colors">jbrasillabs.com.br</a>
+            </p>
+          </div>
 
           <div className="flex gap-3">
             <a
