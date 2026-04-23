@@ -166,6 +166,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activeHeroImage, setActiveHeroImage] = useState(0);
   const galleryRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -207,6 +208,14 @@ export default function Home() {
     const timer = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Auto-play para imagens do Hero
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveHeroImage((prev) => (prev + 1) % 3);
+    }, 4000);
     return () => clearInterval(timer);
   }, []);
 
@@ -295,10 +304,13 @@ export default function Home() {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo no header */}
-          <div className="flex items-center gap-3">
+          {/* Logo no header com função voltar ao topo */}
+          <div 
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <div
-              className="rounded-full overflow-hidden border-2 border-[#EDC088]/60 shadow-lg"
+              className="rounded-full overflow-hidden border-2 border-[#EDC088]/60 shadow-lg transition-transform duration-300 group-hover:scale-110"
               style={{ width: 56, height: 56 }}
             >
               <img
@@ -455,12 +467,17 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Info rápida */}
+            {/* Info rápida com botão de localização funcional */}
             <div className="flex flex-wrap gap-6" style={{ color: "#b8d8db" }}>
-              <div className="flex items-center gap-2">
-                <MapPin size={18} style={{ color: "#EDC088" }} />
+              <a 
+                href="https://www.google.com/maps/place/Almeida+Studio+Pet+Care+-+Jardim+das+Am%C3%A9ricas/data=!4m7!3m6!1s0x94dce546214dbf77:0xedda7d3baa50ba4e!8m2!3d-25.4719619!4d-49.2280487!16s%2Fg%2F11ffw7grrz!19sChIJd79NIUbl3JQRTrpQqjt92u0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-[#EDC088] transition-colors group"
+              >
+                <MapPin size={18} className="text-[#EDC088] group-hover:scale-125 transition-transform" />
                 <span className="text-sm">Jd. das Américas, Curitiba</span>
-              </div>
+              </a>
               <div className="flex items-center gap-2">
                 <Phone size={18} style={{ color: "#EDC088" }} />
                 <span className="text-sm">(41) 9922-3305</span>
@@ -472,8 +489,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Imagem hero */}
-          <div className="relative flex justify-center">
+          {/* Banner Hero Dinâmico com Imagens Reais */}
+          <div className="relative flex justify-center h-[450px] w-full max-w-[500px] mx-auto">
             <div
               className="absolute inset-0 rounded-[40px] blur-2xl opacity-30"
               style={{
@@ -482,22 +499,37 @@ export default function Home() {
               }}
             />
             <div
-              className="relative rounded-[40px] overflow-hidden shadow-2xl"
-              style={{
-                border: "3px solid rgba(237, 192, 136, 0.4)",
-                maxWidth: 480,
-                width: "100%",
-              }}
+              className="relative w-full h-full rounded-[40px] overflow-hidden border-4 border-[#EDC088]/30 shadow-2xl"
             >
-              <img
-                src="/images/pet_shih_tzu.jpg"
-                alt="Shih Tzu no Studio Almeida Pet Care"
-                className="w-full h-auto object-cover"
-                style={{ maxHeight: 480 }}
-              />
+              {/* Slides de Imagens */}
+              {[
+                "/images/pet_shih_tzu.jpg",
+                "/images/pet_poodle.jpg",
+                "/images/pet_maltese.jpg"
+              ].map((src, idx) => (
+                <img
+                  key={idx}
+                  src={src}
+                  alt={`Pet feliz no Studio Almeida ${idx + 1}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                    activeHeroImage === idx ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+
+              {/* Overlay de navegação do banner */}
+              <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {[0, 1, 2].map((i) => (
+                  <div 
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${activeHeroImage === i ? "w-6 bg-[#EDC088]" : "w-1.5 bg-white/50"}`}
+                  />
+                ))}
+              </div>
+
               {/* Badge sobre a imagem */}
               <div
-                className="absolute bottom-4 left-4 right-4 rounded-2xl px-4 py-3 flex items-center gap-3"
+                className="absolute bottom-4 left-4 right-4 rounded-2xl px-4 py-3 flex items-center gap-3 z-10"
                 style={{
                   backgroundColor: "rgba(11, 124, 130, 0.92)",
                   backdropFilter: "blur(10px)",
