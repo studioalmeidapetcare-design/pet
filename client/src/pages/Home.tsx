@@ -43,8 +43,8 @@ const petGalleryImages = [
   },
   {
     id: 3,
-    src: "/images/pet_shih_tzu_marrom.webp",
-    alt: "Shih Tzu Glamourosa",
+    src: "/images/pet_shih_tzu_butterfly.jpg",
+    alt: "Shih Tzu com laço de borboleta — Studio Almeida Pet Care",
     title: "Shih Tzu Glamourosa",
     breed: "Shih Tzu",
   },
@@ -554,7 +554,7 @@ export default function Home() {
               {[
                 "/images/pet_yorkshire_new.jpg",
                 "/images/pet_shih_tzu_new.webp",
-                "/images/pet_maltese.jpg"
+                "/images/pet_shih_tzu_butterfly.jpg"
               ].map((src, idx) => (
                 <img
                   key={idx}
