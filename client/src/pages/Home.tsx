@@ -11,21 +11,27 @@ import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin, Phone, Instagram, 
 const petGalleryImages = [
   {
     id: 1,
-    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_1.png",
-    alt: "Bulldogs Franceses Estilosos",
-    title: "Bulldogs Franceses",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_maltese.webp",
+    alt: "Transformação Maltês",
+    title: "Transformação Maltês",
   },
   {
     id: 2,
-    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.png",
-    alt: "Border Collie Marrom e Branco",
-    title: "Border Collie",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_chihuahua.webp",
+    alt: "Maltês — Studio Almeida Pet Care",
+    title: "Maltês — Studio Almeida Pet Care",
   },
   {
     id: 3,
-    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_3.png",
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_shih_tzu_marrom.webp",
     alt: "Shih Tzu Glamourosa",
     title: "Shih Tzu Glamourosa",
+  },
+  {
+    id: 4,
+    src: "https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_shih_tzu_cinza.webp",
+    alt: "Shih Tzu — Studio Almeida Pet Care",
+    title: "Shih Tzu — Studio Almeida Pet Care",
   },
 ];
 
@@ -194,7 +200,7 @@ export default function Home() {
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#EDC088] to-[#F5E6D3] rounded-[40px] opacity-20 blur-xl" />
             <img
-              src="https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_2.png"
+              src="https://raw.githubusercontent.com/studioalmeidapetcare-design/pet/main/public/images/pet_maltese.webp"
               alt="Studio Almeida Pet Care"
               className="relative rounded-[40px] shadow-2xl w-full h-auto object-cover"
             />
