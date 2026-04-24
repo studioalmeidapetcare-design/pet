@@ -57,7 +57,7 @@ const petGalleryImages = [
   },
   {
     id: 5,
-    src: "/images/pet_maltese2.webp",
+    src: "/images/pet_maltese.webp",
     alt: "Maltês após transformação completa",
     title: "Transformação Maltês",
     breed: "Maltês",
