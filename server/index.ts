@@ -18,6 +18,11 @@ async function startServer() {
 
   app.use(express.static(staticPath));
 
+  // Health check route - lightweight response for monitoring/cron-jobs
+  app.get("/health", (_req, res) => {
+    res.status(200).send("OK");
+  });
+
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {
     res.sendFile(path.join(staticPath, "index.html"));

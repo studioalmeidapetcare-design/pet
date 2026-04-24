@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studioalmeidapetcare.com.br/sitemap.xml
