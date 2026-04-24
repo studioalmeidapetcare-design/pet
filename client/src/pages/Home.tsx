@@ -64,10 +64,10 @@ const petGalleryImages = [
   },
   {
     id: 6,
-    src: "/images/pet_poodle2.jpg",
-    alt: "Poodle antes e depois da tosa",
-    title: "Antes & Depois",
-    breed: "Poodle",
+    src: "/images/pet_yorkshire_new.jpg",
+    alt: "Yorkshire elegante após banho e tosa",
+    title: "Yorkshire Elegante",
+    breed: "Yorkshire",
   },
   {
     id: 7,
@@ -552,8 +552,8 @@ export default function Home() {
               className="relative w-full h-full rounded-[40px] overflow-hidden border-4 border-[#EDC088]/30 shadow-2xl"
             >
               {[
+                "/images/pet_yorkshire_new.jpg",
                 "/images/pet_shih_tzu.jpg",
-                "/images/pet_poodle.jpg",
                 "/images/pet_maltese.jpg"
               ].map((src, idx) => (
                 <img
