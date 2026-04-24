@@ -50,9 +50,9 @@ const petGalleryImages = [
   },
   {
     id: 4,
-    src: "/images/pet_shih_tzu_cinza.webp",
-    alt: "Shih Tzu — Studio Almeida Pet Care",
-    title: "Shih Tzu — Studio Almeida Pet Care",
+    src: "/images/pet_shih_tzu_new.webp",
+    alt: "Shih Tzu feliz — Studio Almeida Pet Care",
+    title: "Shih Tzu Glamourosa",
     breed: "Shih Tzu",
   },
   {
@@ -553,7 +553,7 @@ export default function Home() {
             >
               {[
                 "/images/pet_yorkshire_new.jpg",
-                "/images/pet_shih_tzu.jpg",
+                "/images/pet_shih_tzu_new.webp",
                 "/images/pet_maltese.jpg"
               ].map((src, idx) => (
                 <img
