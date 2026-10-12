@@ -28,7 +28,7 @@ const WHATSAPP_URL = "https://wa.me/message/YIPZSQPDCCGRB1";
 const PHONE_DISPLAY = "(41) 99222-3168";
 const PHONE_URL = "tel:+5541992223168";
 const BUSINESS_ADDRESS = "Rua Joaquim Amaral, 1174 - Jardim das Américas, Curitiba - PR, 81530-430";
-const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS_ADDRESS)}`;
+const MAPS_URL = "https://www.google.com/maps/place/Luppy+Pet+Care+Jardim/@-25.4719619,-49.2288142,18z/data=!3m2!4b1!5s0x94dce5347a380459:0xbf24f9ce87a77abf!4m6!3m5!1s0x94dce546214dbf77:0xedda7d3baa50ba4e!8m2!3d-25.4719619!4d-49.2280487!16s%2Fg%2F11ffw7grrz?hl=en-US&entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D";
 const INSTAGRAM_URL = "https://www.instagram.com/luppypetcarejardim/";
 
 function handleTopClick(event: MouseEvent<HTMLAnchorElement>) {
@@ -575,7 +575,7 @@ export default function Home() {
                 <p>Escolha o melhor horário para o seu pet e fale com a Luppy Pet Care Jardim pelo WhatsApp. Estamos na Rua Joaquim Amaral, 1174, no Jardim das Américas, em Curitiba.</p>
             </SectionHeading>
             <div className="luppy-map-frame">
-                <MapView initialCenter={{ lat: -25.4719619, lng: -49.2280487 }} initialZoom={16} className="rounded-[24px]" />
+                <MapView initialCenter={{ lat: -25.4719619, lng: -49.2280487 }} initialZoom={18} placeUrl={MAPS_URL} className="rounded-[24px]" />
             </div>
             <div className="luppy-contact-actions mt-5">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
