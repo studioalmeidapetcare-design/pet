@@ -13,6 +13,7 @@ import {
   Menu,
   MessageCircle,
   PawPrint,
+  PhoneCall,
   Quote,
   Scissors,
   ShieldCheck,
@@ -24,6 +25,8 @@ import {
 import { MapView } from "@/components/Map";
 
 const WHATSAPP_URL = "https://wa.me/message/YIPZSQPDCCGRB1";
+const PHONE_DISPLAY = "(41) 99222-3168";
+const PHONE_URL = "tel:+5541992223168";
 const BUSINESS_ADDRESS = "Rua Joaquim Amaral, 1174 - Jardim das Américas, Curitiba - PR, 81530-430";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS_ADDRESS)}`;
 const INSTAGRAM_URL = "https://www.instagram.com/luppypetcarejardim/";
@@ -573,6 +576,11 @@ export default function Home() {
                 <span><strong>WhatsApp</strong><small>Fale com a nossa equipe</small></span>
                 <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
               </a>
+              <a href={PHONE_URL} className="luppy-contact-row group">
+                <span className="luppy-contact-icon bg-[var(--luppy-forest)]/10 text-[var(--luppy-forest)]"><PhoneCall size={21} /></span>
+                <span><strong>{PHONE_DISPLAY}</strong><small>Telefone de contato</small></span>
+                <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
+              </a>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
                 <span className="luppy-contact-icon bg-[var(--luppy-gold)]/15 text-[var(--luppy-gold-dark)]"><CalendarDays size={21} /></span>
                 <span><strong>Quero agendar</strong><small>Escolha seu horário</small></span>
@@ -610,7 +618,7 @@ export default function Home() {
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white"><LogoMark className="h-11 w-11 object-contain" /></span>
             <span><strong className="block font-semibold">Luppy Pet Care Jardim</strong><small className="mt-1 block text-xs text-[var(--luppy-gold)]">Centro de estética animal</small></span>
           </a>
-          <div className="text-xs leading-relaxed text-white/55">© {new Date().getFullYear()} Luppy Pet Care Jardim LTDA. Todos os direitos reservados.<br />CNPJ: 68.826.391/0001-31 · Jardim das Américas, Curitiba – PR</div>
+          <div className="text-xs leading-relaxed text-white/55">© {new Date().getFullYear()} Luppy Pet Care Jardim LTDA. Todos os direitos reservados.<br />CNPJ: 68.826.391/0001-31 · Jardim das Américas, Curitiba – PR<br /><a href={PHONE_URL} className="transition hover:text-[var(--luppy-gold)]">Telefone: {PHONE_DISPLAY}</a></div>
           <div className="flex gap-2">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="luppy-footer-social" aria-label="Instagram"><Instagram size={18} /></a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-footer-social" aria-label="WhatsApp"><MessageCircle size={18} /></a>
