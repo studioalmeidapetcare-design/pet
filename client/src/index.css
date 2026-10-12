@@ -696,18 +696,21 @@ h6 {
 }
 
 @media (max-width: 1023px) {
+  .luppy-header-cta {
+    display: none;
+  }
+
   .luppy-header-shell {
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .luppy-header-brand {
-    margin-inline: auto;
+    margin-inline: 0;
   }
 
   .luppy-header-actions {
-    position: absolute;
-    right: 0;
+    position: static;
   }
 }
 
