@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
+  ArrowDown,
   CalendarDays,
   ChevronLeft,
   ChevronRight,
@@ -24,7 +25,7 @@ import { MapView } from "@/components/Map";
 
 const WHATSAPP_URL = "https://wa.me/message/YIPZSQPDCCGRB1";
 const MAPS_URL =
-  "https://www.google.com/maps/place/Almeida+Studio+Pet+Care+-+Jardim+das+Am%C3%A9ricas/data=!4m7!3m6!1s0x94dce546214dbf77:0xedda7d3baa50ba4e!8m2!3d-25.4719619!4d-49.2280487!16s%2Fg%2F11ffw7grrz!19sChIJd79NIUbl3JQRTrpQqjt92u0";
+  "https://www.google.com/maps/search/?api=1&query=-25.4719619,-49.2280487";
 const INSTAGRAM_URL = "https://www.instagram.com/luppypetcarejardim/";
 
 const navItems = [
@@ -52,7 +53,7 @@ const petGalleryImages = [
   {
     id: 2,
     src: "/images/pet_chihuahua.webp",
-    alt: "Chihuahua bem cuidado pela Luppy Pet Care",
+    alt: "Chihuahua bem cuidado pela Luppy Pet Care Jardim",
     title: "Cuidado delicado",
     breed: "Chihuahua",
   },
@@ -165,7 +166,7 @@ function LogoMark({ className = "" }: { className?: string }) {
   return (
     <img
       src="/images/luppy-logo.jpg"
-      alt="Luppy Pet Care"
+      alt="Luppy Pet Care Jardim"
       className={className}
     />
   );
@@ -236,16 +237,16 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-[var(--luppy-cream)] text-[var(--luppy-ink)]">
+    <div className="min-h-screen bg-[var(--luppy-forest)] text-[var(--luppy-ink)]">
       <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? "luppy-header luppy-header--scrolled" : "luppy-header"}`}>
         <div className="luppy-shell flex h-[76px] items-center justify-between gap-4">
-          <a href="#top" className="flex items-center gap-3" aria-label="Luppy Pet Care - início">
+          <a href="#top" className="flex items-center gap-3" aria-label="Luppy Pet Care Jardim - início">
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(24,94,86,0.12)]">
               <LogoMark className="h-11 w-11 object-contain" />
             </span>
             <span className="hidden sm:block">
-              <strong className="block font-semibold leading-none text-[var(--luppy-forest)]">Luppy</strong>
-              <small className="mt-1 block text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--luppy-gold-dark)]">Pet Care</small>
+              <strong className="block max-w-[190px] font-semibold leading-tight text-[var(--luppy-forest)]">Luppy Pet Care Jardim</strong>
+              <small className="mt-1 block text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Estética animal</small>
             </span>
           </a>
 
@@ -298,6 +299,17 @@ export default function Home() {
 
       <main>
         <section id="top" className="luppy-hero relative pt-32 sm:pt-40">
+          <div className="luppy-welcome-backdrop" aria-hidden="true">
+            {heroImages.map((src, index) => (
+              <img
+                key={src}
+                src={src}
+                alt=""
+                className={`transition-opacity duration-1000 ${activeHeroImage === index ? "opacity-100" : "opacity-0"}`}
+              />
+            ))}
+            <div className="luppy-welcome-backdrop-shade" />
+          </div>
           <div className="luppy-hero-leaf luppy-hero-leaf--one" />
           <div className="luppy-hero-leaf luppy-hero-leaf--two" />
           <div className="luppy-shell relative z-10">
@@ -305,16 +317,16 @@ export default function Home() {
               <div className="max-w-xl animate-[luppy-rise_0.7s_ease-out_both]">
                 <div className="luppy-pill mb-6">
                   <Leaf size={15} />
-                  Centro de estética animal em Curitiba
+                  Bem-vindo à Luppy Pet Care Jardim
                 </div>
-                <h1 className="luppy-display text-5xl leading-[0.98] text-[var(--luppy-forest)] sm:text-7xl">
+                <h1 className="luppy-display text-5xl leading-[0.98] text-white sm:text-7xl">
                   Um cuidado <em className="not-italic text-[var(--luppy-gold-dark)]">bonito</em> começa pelo bem-estar.
                 </h1>
-                <p className="mt-7 max-w-lg text-lg leading-relaxed text-[var(--luppy-muted)]">
-                  Na Luppy Pet Care, banho, tosa e carinho caminham juntos para que cada pet se sinta seguro, leve e ainda mais feliz.
+                <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/75">
+                  Na Luppy Pet Care Jardim, banho, tosa e carinho caminham juntos para que cada pet se sinta seguro, leve e ainda mais feliz.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-forest-button">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-gold-button">
                     <MessageCircle size={19} />
                     Agendar pelo WhatsApp
                   </a>
@@ -323,9 +335,9 @@ export default function Home() {
                     <ChevronRight size={18} />
                   </a>
                 </div>
-                <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium text-[var(--luppy-muted)]">
+                <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium text-white/75">
                   <span className="inline-flex items-center gap-2"><Star size={16} fill="currentColor" className="text-[var(--luppy-gold)]" /> Avaliação 5.0</span>
-                  <span className="inline-flex items-center gap-2"><ShieldCheck size={16} className="text-[var(--luppy-forest)]" /> Atendimento cuidadoso</span>
+                  <span className="inline-flex items-center gap-2"><ShieldCheck size={16} className="text-[var(--luppy-gold)]" /> Atendimento cuidadoso</span>
                 </div>
               </div>
 
@@ -336,8 +348,8 @@ export default function Home() {
                     <LogoMark className="h-full w-full object-contain" />
                   </div>
                   <div className="pr-2">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--luppy-gold-dark)]">Luppy</p>
-                    <p className="mt-1 text-sm font-semibold leading-tight text-[var(--luppy-forest)]">Pet Care</p>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--luppy-gold-dark)]">Luppy Pet Care Jardim</p>
+                    <p className="mt-1 text-sm font-semibold leading-tight text-[var(--luppy-forest)]">Estética animal em Curitiba</p>
                     <p className="mt-1 text-xs text-[var(--luppy-muted)]">Cuidado bonito, do começo ao fim.</p>
                   </div>
                 </div>
@@ -346,13 +358,13 @@ export default function Home() {
                     <img
                       key={src}
                       src={src}
-                      alt="Pet cuidado pela Luppy Pet Care"
+                      alt="Pet cuidado pela Luppy Pet Care Jardim"
                       className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${activeHeroImage === index ? "opacity-100" : "opacity-0"}`}
                     />
                   ))}
                   <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3 rounded-2xl bg-[rgba(255,255,255,0.9)] p-4 shadow-lg backdrop-blur-md">
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Um momento Luppy</p>
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Um momento Luppy Pet Care Jardim</p>
                       <p className="mt-1 font-semibold text-[var(--luppy-forest)]">Seu pet em boas mãos.</p>
                     </div>
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--luppy-forest)] text-white"><PawPrint size={21} /></span>
@@ -388,6 +400,10 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <a href="#sobre" className="luppy-scroll-cue mt-8" aria-label="Descer para a seção Sobre">
+              <span>Descubra mais</span>
+              <ArrowDown size={16} />
+            </a>
           </div>
         </section>
 
@@ -399,7 +415,7 @@ export default function Home() {
                 <div className="luppy-about-orbit luppy-about-orbit--two" />
                 <div className="relative z-10 flex h-full flex-col justify-between gap-10 p-7 sm:p-9">
                   <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.2em] text-[rgba(255,255,255,0.7)]">
-                    <span>Luppy / 01</span>
+                    <span>Luppy Pet Care Jardim / 01</span>
                     <span>Care studio</span>
                   </div>
                   <div className="luppy-about-logo-lockup mx-auto">
@@ -418,7 +434,7 @@ export default function Home() {
               </div>
 
               <div>
-                <SectionHeading eyebrow="A essência Luppy" title="Mais do que estética: um ritual de confiança.">
+                <SectionHeading eyebrow="A essência Luppy Pet Care Jardim" title="Mais do que estética: um ritual de confiança.">
                   <p>Há mais de 8 anos, nossa rotina é cuidar de cada pet com calma, técnica e atenção aos pequenos sinais. O resultado aparece no pelo, mas começa no jeito como ele é recebido.</p>
                 </SectionHeading>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -474,7 +490,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="galeria" className="luppy-section bg-[var(--luppy-sand)]/45">
+        <section id="galeria" className="luppy-section bg-[var(--luppy-sand)]">
           <div className="luppy-shell">
             <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
               <SectionHeading eyebrow="Nosso trabalho" title="Transformações que deixam o rabo abanando.">
@@ -545,32 +561,28 @@ export default function Home() {
 
         <section id="contato" className="luppy-section bg-white">
           <div className="luppy-shell">
-            <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
-              <div>
-                <SectionHeading eyebrow="Vamos conversar" title="O próximo momento de carinho pode começar agora.">
-                  <p>Escolha o melhor horário para o seu pet e fale com a Luppy pelo WhatsApp. Estamos no Jardim das Américas, em Curitiba.</p>
-                </SectionHeading>
-                <div className="space-y-3">
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
-                    <span className="luppy-contact-icon bg-[#25D366]/10 text-[#128C7E]"><MessageCircle size={21} /></span>
-                    <span><strong>WhatsApp</strong><small>Fale com a nossa equipe</small></span>
-                    <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
-                  </a>
-                  <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
-                    <span className="luppy-contact-icon bg-[var(--luppy-sand)] text-[var(--luppy-forest)]"><MapPin size={21} /></span>
-                    <span><strong>Jardim das Américas</strong><small>Curitiba · Paraná</small></span>
-                    <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
-                  </a>
-                  <div className="luppy-contact-row">
-                    <span className="luppy-contact-icon bg-[var(--luppy-sand)] text-[var(--luppy-gold-dark)]"><Clock3 size={21} /></span>
-                    <span><strong>Horários</strong><small>Ter–Sex: 9h–17h · Sáb: 9h–15h</small></span>
-                  </div>
-                </div>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-forest-button mt-8"><CalendarDays size={18} /> Quero agendar</a>
-              </div>
-              <div className="overflow-hidden rounded-[32px] border-8 border-[var(--luppy-sand)] bg-[var(--luppy-sand)] shadow-[0_22px_55px_rgba(24,94,86,0.14)]">
-                <MapView initialCenter={{ lat: -25.4719619, lng: -49.2280487 }} initialZoom={16} className="h-[410px] rounded-[24px] sm:h-[500px]" />
-              </div>
+            <SectionHeading eyebrow="Vamos conversar" title="O próximo momento de carinho pode começar agora.">
+              <p>Escolha o melhor horário para o seu pet e fale com a Luppy Pet Care Jardim pelo WhatsApp. Estamos no Jardim das Américas, em Curitiba.</p>
+            </SectionHeading>
+            <div className="luppy-map-frame">
+                <MapView initialCenter={{ lat: -25.4719619, lng: -49.2280487 }} initialZoom={16} className="rounded-[24px]" />
+            </div>
+            <div className="luppy-contact-actions mt-5">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
+                <span className="luppy-contact-icon bg-[#25D366]/10 text-[#128C7E]"><MessageCircle size={21} /></span>
+                <span><strong>WhatsApp</strong><small>Fale com a nossa equipe</small></span>
+                <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
+              </a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
+                <span className="luppy-contact-icon bg-[var(--luppy-gold)]/15 text-[var(--luppy-gold-dark)]"><CalendarDays size={21} /></span>
+                <span><strong>Quero agendar</strong><small>Escolha seu horário</small></span>
+                <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
+              </a>
+              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
+                <span className="luppy-contact-icon bg-[var(--luppy-sand)] text-[var(--luppy-forest)]"><MapPin size={21} /></span>
+                <span><strong>Jardim das Américas</strong><small>Curitiba · Paraná</small></span>
+                <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
             <div className="mt-14 rounded-[28px] bg-[var(--luppy-forest)] p-7 text-center text-white sm:p-10">
               <p className="luppy-kicker text-[var(--luppy-gold)]">Funcionamento</p>
@@ -595,9 +607,9 @@ export default function Home() {
         <div className="luppy-shell flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <a href="#top" className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white"><LogoMark className="h-11 w-11 object-contain" /></span>
-            <span><strong className="block font-semibold">Luppy Pet Care</strong><small className="mt-1 block text-xs text-[var(--luppy-gold)]">Centro de estética animal</small></span>
+            <span><strong className="block font-semibold">Luppy Pet Care Jardim</strong><small className="mt-1 block text-xs text-[var(--luppy-gold)]">Centro de estética animal</small></span>
           </a>
-          <div className="text-xs leading-relaxed text-white/55">© {new Date().getFullYear()} Luppy Pet Care. Todos os direitos reservados.<br />CNPJ: 53.190.485/0001-90 · Jardim das Américas, Curitiba – PR</div>
+          <div className="text-xs leading-relaxed text-white/55">© {new Date().getFullYear()} Luppy Pet Care Jardim LTDA. Todos os direitos reservados.<br />CNPJ: 68.826.391/0001-31 · Jardim das Américas, Curitiba – PR</div>
           <div className="flex gap-2">
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="luppy-footer-social" aria-label="Instagram"><Instagram size={18} /></a>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-footer-social" aria-label="WhatsApp"><MessageCircle size={18} /></a>
@@ -613,7 +625,7 @@ export default function Home() {
           <div className="relative w-full max-w-2xl" onClick={(event) => event.stopPropagation()}>
             <button type="button" onClick={() => setSelectedImage(null)} className="absolute -right-2 -top-14 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20" aria-label="Fechar galeria"><X size={25} /></button>
             <div className="overflow-hidden rounded-[30px] border-4 border-white/20 bg-white shadow-2xl"><img src={selectedImage.src} alt={selectedImage.alt} className="max-h-[72vh] w-full object-cover" /></div>
-            <div className="mt-4 text-center text-white"><h2 className="luppy-display text-2xl">{selectedImage.title}</h2><p className="mt-1 text-sm text-[var(--luppy-gold)]">{selectedImage.breed} · Luppy Pet Care</p></div>
+            <div className="mt-4 text-center text-white"><h2 className="luppy-display text-2xl">{selectedImage.title}</h2><p className="mt-1 text-sm text-[var(--luppy-gold)]">{selectedImage.breed} · Luppy Pet Care Jardim</p></div>
           </div>
         </div>
       )}

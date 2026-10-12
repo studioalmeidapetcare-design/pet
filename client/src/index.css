@@ -68,11 +68,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
   margin: 0;
-  background: var(--luppy-cream);
+  overflow-x: clip;
+  background: var(--luppy-forest);
   color: var(--luppy-ink);
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -205,12 +207,82 @@ h6 {
 }
 
 .luppy-section {
+  position: relative;
+  z-index: 1;
   padding: 6rem 0;
+  scroll-snap-align: start;
 }
 
 .luppy-hero {
-  min-height: 760px;
-  background: var(--luppy-cream);
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  min-height: 100svh;
+  padding-bottom: 2rem;
+  background: var(--luppy-forest);
+  scroll-snap-align: start;
+}
+
+.luppy-welcome-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--luppy-forest-deep);
+}
+
+.luppy-welcome-backdrop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% center;
+  filter: saturate(0.82) contrast(0.92);
+}
+
+.luppy-welcome-backdrop-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(15, 69, 63, 0.96) 0%, rgba(15, 69, 63, 0.84) 39%, rgba(15, 69, 63, 0.42) 74%, rgba(15, 69, 63, 0.58) 100%),
+    linear-gradient(180deg, rgba(15, 69, 63, 0.26) 0%, rgba(15, 69, 63, 0.08) 48%, rgba(15, 69, 63, 0.7) 100%);
+}
+
+.luppy-hero .luppy-shell > .grid > :last-child {
+  display: none;
+}
+
+.luppy-scroll-cue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: fit-content;
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.luppy-scroll-cue::after {
+  width: 2.4rem;
+  height: 1px;
+  background: rgba(210, 156, 70, 0.7);
+  content: "";
+}
+
+.luppy-scroll-cue svg {
+  color: var(--luppy-gold);
+  animation: luppy-scroll-cue 2.2s ease-in-out infinite;
+}
+
+.luppy-scroll-cue:hover {
+  color: white;
+  transform: translateY(2px);
 }
 
 .luppy-hero-leaf {
@@ -224,7 +296,7 @@ h6 {
   left: -8rem;
   width: 23rem;
   height: 23rem;
-  background: rgba(238, 228, 211, 0.7);
+  background: rgba(238, 228, 211, 0.14);
 }
 
 .luppy-hero-leaf--two {
@@ -248,6 +320,24 @@ h6 {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.luppy-hero .luppy-pill {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.luppy-hero .luppy-outline-button {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.luppy-hero .luppy-outline-button:hover {
+  color: var(--luppy-forest);
+  border-color: white;
+  background: white;
 }
 
 .luppy-kicker {
@@ -521,6 +611,17 @@ h6 {
   font-size: 0.76rem;
 }
 
+.luppy-contact-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.luppy-contact-actions .luppy-contact-row {
+  min-width: 0;
+  min-height: 5.4rem;
+}
+
 .luppy-contact-icon {
   display: inline-flex;
   align-items: center;
@@ -529,6 +630,16 @@ h6 {
   height: 2.8rem;
   flex: 0 0 auto;
   border-radius: 0.9rem;
+}
+
+.luppy-map-frame {
+  align-self: start;
+  height: fit-content;
+  overflow: hidden;
+  border: 1px solid rgba(24, 94, 86, 0.14);
+  border-radius: 1.5rem;
+  background: var(--luppy-cream);
+  box-shadow: 0 22px 55px rgba(24, 94, 86, 0.14);
 }
 
 .luppy-footer-social {
@@ -580,6 +691,11 @@ h6 {
   50% { transform: translateY(-7px); }
 }
 
+@keyframes luppy-scroll-cue {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
 @media (max-width: 640px) {
   .luppy-shell {
     width: min(100% - 2rem, 1180px);
@@ -597,6 +713,10 @@ h6 {
   .luppy-testimonial-card {
     min-height: 320px;
     padding: 1.8rem 1.55rem;
+  }
+
+  .luppy-contact-actions {
+    grid-template-columns: 1fr;
   }
 }
 
