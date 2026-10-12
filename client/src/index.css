@@ -68,7 +68,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
 }
 
 body {
@@ -706,14 +705,15 @@ h6 {
   }
 
   .luppy-section {
-    padding: 4.5rem 0;
+    padding: 3.75rem 0;
   }
 
   .luppy-hero {
     position: relative;
     top: auto;
     min-height: auto;
-    padding-bottom: 4rem;
+    padding-top: 6.5rem !important;
+    padding-bottom: 2.5rem;
     scroll-snap-align: none;
   }
 
@@ -721,9 +721,70 @@ h6 {
     scroll-snap-align: none;
   }
 
+  .luppy-hero .luppy-shell > .grid {
+    gap: 1rem;
+  }
+
+  .luppy-hero .luppy-pill {
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.42rem 0.65rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
+
+  .luppy-hero h1 {
+    max-width: 20rem;
+    font-size: clamp(2.35rem, 11vw, 3rem);
+  }
+
+  .luppy-hero p {
+    margin-top: 1.25rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .luppy-hero .luppy-gold-button,
+  .luppy-hero .luppy-outline-button {
+    width: 100%;
+    padding: 0.78rem 0.95rem;
+    font-size: 0.74rem;
+  }
+
+  .luppy-hero .luppy-proof-bar {
+    margin-top: 2rem !important;
+    border-radius: 1rem;
+  }
+
+  .luppy-hero .luppy-proof-bar > div {
+    padding: 0.7rem 0.35rem;
+  }
+
+  .luppy-hero .luppy-proof-bar strong {
+    font-size: 1.55rem;
+  }
+
+  .luppy-hero .luppy-proof-bar span {
+    font-size: 0.55rem;
+    letter-spacing: 0.06em;
+  }
+
+  .luppy-scroll-cue {
+    margin-top: 1.25rem !important;
+    font-size: 0.58rem;
+  }
+
+  .luppy-section h2 {
+    font-size: clamp(1.95rem, 8.5vw, 2.5rem);
+  }
+
+  .luppy-section .mb-12 {
+    margin-bottom: 2rem !important;
+  }
+
   .luppy-testimonial-card {
-    min-height: 320px;
-    padding: 1.8rem 1.55rem;
+    min-height: 280px;
+    padding: 1.55rem 1.25rem;
   }
 
   .luppy-contact-actions {

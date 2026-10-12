@@ -364,7 +364,7 @@ export default function Home() {
                   ))}
                   <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3 rounded-2xl bg-[rgba(255,255,255,0.9)] p-4 shadow-lg backdrop-blur-md">
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Um momento Luppy Pet Care Jardim</p>
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Seu pet bem cuidado</p>
                       <p className="mt-1 font-semibold text-[var(--luppy-forest)]">Seu pet em boas mãos.</p>
                     </div>
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--luppy-forest)] text-white"><PawPrint size={21} /></span>
@@ -425,8 +425,8 @@ export default function Home() {
                   </div>
                   <div className="flex items-end justify-between gap-4 border-t border-white/20 pt-5 text-white">
                     <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--luppy-gold)]">Cuidado com propósito</p>
-                      <p className="mt-2 max-w-[220px] text-sm leading-relaxed text-white/70">Uma identidade feita para comunicar confiança em cada detalhe.</p>
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--luppy-gold)]">Carinho em cada atendimento</p>
+                      <p className="mt-2 max-w-[220px] text-sm leading-relaxed text-white/70">Técnica, atenção e carinho para o seu pet se sentir bem.</p>
                     </div>
                     <Sparkles size={24} className="shrink-0 text-[var(--luppy-gold)]" />
                   </div>
@@ -434,7 +434,7 @@ export default function Home() {
               </div>
 
               <div>
-                <SectionHeading eyebrow="A essência Luppy Pet Care Jardim" title="Mais do que estética: um ritual de confiança.">
+                <SectionHeading eyebrow="O jeito Luppy de cuidar" title="Mais do que estética: confiança em cada visita.">
                   <p>Há mais de 8 anos, nossa rotina é cuidar de cada pet com calma, técnica e atenção aos pequenos sinais. O resultado aparece no pelo, mas começa no jeito como ele é recebido.</p>
                 </SectionHeading>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -458,7 +458,7 @@ export default function Home() {
                 </div>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-text-link mt-8">
                   <CalendarDays size={18} />
-                  Agende um momento de cuidado
+                  Agende o cuidado do seu pet
                   <ChevronRight size={17} />
                 </a>
               </div>
@@ -494,7 +494,7 @@ export default function Home() {
           <div className="luppy-shell">
             <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
               <SectionHeading eyebrow="Nosso trabalho" title="Transformações que deixam o rabo abanando.">
-                <p>Alguns dos nossos momentos favoritos — e o resultado de um atendimento feito com paciência.</p>
+                <p>Alguns dos nossos trabalhos favoritos — e o resultado de um atendimento feito com paciência.</p>
               </SectionHeading>
               <div className="mb-12 flex gap-2">
                 <button type="button" onClick={() => handleGalleryScroll("left")} className="luppy-round-button" aria-label="Ver fotos anteriores"><ChevronLeft size={20} /></button>
@@ -561,7 +561,7 @@ export default function Home() {
 
         <section id="contato" className="luppy-section bg-white">
           <div className="luppy-shell">
-            <SectionHeading eyebrow="Vamos conversar" title="O próximo momento de carinho pode começar agora.">
+            <SectionHeading eyebrow="Vamos conversar" title="O próximo cuidado do seu pet pode começar agora.">
               <p>Escolha o melhor horário para o seu pet e fale com a Luppy Pet Care Jardim pelo WhatsApp. Estamos no Jardim das Américas, em Curitiba.</p>
             </SectionHeading>
             <div className="luppy-map-frame">
