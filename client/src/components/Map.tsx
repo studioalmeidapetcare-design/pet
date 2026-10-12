@@ -30,6 +30,7 @@ export function MapView({
         marginHeight={0}
         marginWidth={0}
         src={mapUrl}
+        className="pointer-events-none"
         style={{ border: 0, display: "block" }}
         title="Localização Luppy Pet Care Jardim - Jardim das Américas"
         allowFullScreen
@@ -40,7 +41,16 @@ export function MapView({
         href={mapsLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute inset-x-3 bottom-3 flex items-center gap-3 rounded-2xl border border-white/70 bg-white/95 px-4 py-3 text-left shadow-[0_10px_26px_rgba(15,69,63,0.2)] backdrop-blur-sm transition hover:bg-white sm:inset-x-5 sm:bottom-5"
+        className="absolute inset-0 z-[1] cursor-pointer"
+        aria-label="Abrir a ficha oficial da Luppy Pet Care Jardim no Google Maps"
+      >
+        <span className="absolute left-3 top-3 rounded-full border border-white/80 bg-white/90 px-3 py-1.5 text-[11px] font-bold text-[var(--luppy-forest)] shadow-sm backdrop-blur-sm sm:left-5 sm:top-5">Abrir no Google Maps</span>
+      </a>
+      <a
+        href={mapsLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-x-3 bottom-3 z-10 flex items-center gap-3 rounded-2xl border border-white/70 bg-white/95 px-4 py-3 text-left shadow-[0_10px_26px_rgba(15,69,63,0.2)] backdrop-blur-sm transition hover:bg-white sm:inset-x-5 sm:bottom-5"
         aria-label="Abrir endereço da Luppy Pet Care Jardim no Google Maps"
       >
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--luppy-forest)] text-[var(--luppy-gold)]">
