@@ -586,11 +586,12 @@ export default function Home() {
             </div>
             <div className="mt-14 rounded-[28px] bg-[var(--luppy-forest)] p-7 text-center text-white sm:p-10">
               <p className="luppy-kicker text-[var(--luppy-gold)]">Funcionamento</p>
-              <div className="mx-auto mt-5 grid max-w-3xl gap-3 sm:grid-cols-3">
+              <div className="mx-auto mt-5 grid max-w-4xl gap-3 sm:grid-cols-4">
                 {[
-                  { day: "Terça – Sexta", hours: "9h às 17h" },
-                  { day: "Sábado", hours: "9h às 15h" },
+                  { day: "Terça – Sexta", hours: "9h às 18h" },
+                  { day: "Sábado", hours: "9h às 17h" },
                   { day: "Domingo", hours: "Fechado" },
+                  { day: "Segunda", hours: "Fechado" },
                 ].map((item) => (
                   <div key={item.day} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--luppy-gold)]">{item.day}</p>
