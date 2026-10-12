@@ -696,6 +696,10 @@ h6 {
 }
 
 @media (max-width: 1023px) {
+  .luppy-header {
+    overflow-x: clip;
+  }
+
   .luppy-header-cta {
     display: none;
   }
@@ -706,11 +710,15 @@ h6 {
   }
 
   .luppy-header-brand {
+    min-width: 0;
     margin-inline: 0;
   }
 
   .luppy-header-actions {
     position: static;
+    flex: 0 0 2.5rem;
+    justify-content: flex-end;
+    margin-left: auto;
   }
 }
 
