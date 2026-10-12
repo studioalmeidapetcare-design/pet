@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import {
   ArrowDown,
   CalendarDays,
@@ -30,6 +30,11 @@ const PHONE_URL = "tel:+5541992223168";
 const BUSINESS_ADDRESS = "Rua Joaquim Amaral, 1174 - Jardim das Américas, Curitiba - PR, 81530-430";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS_ADDRESS)}`;
 const INSTAGRAM_URL = "https://www.instagram.com/luppypetcarejardim/";
+
+function handleTopClick(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 const navItems = [
   { label: "Sobre", href: "#sobre" },
@@ -243,7 +248,7 @@ export default function Home() {
     <div className="min-h-screen bg-[var(--luppy-forest)] text-[var(--luppy-ink)]">
       <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? "luppy-header luppy-header--scrolled" : "luppy-header"}`}>
         <div className="luppy-header-shell luppy-shell flex h-[76px] items-center justify-between gap-4">
-          <a href="#top" className="luppy-header-brand flex items-center gap-3" aria-label="Luppy Pet Care Jardim - início">
+          <a href="#top" onClick={handleTopClick} className="luppy-header-brand flex items-center gap-3" aria-label="Luppy Pet Care Jardim - início">
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(24,94,86,0.12)]">
               <LogoMark className="h-11 w-11 object-contain" />
             </span>
@@ -392,7 +397,7 @@ export default function Home() {
 
             <div className="luppy-proof-bar mt-20 grid grid-cols-2 divide-x divide-y divide-[var(--luppy-line)] sm:grid-cols-4 sm:divide-y-0">
               {[
-                { value: "8+", label: "anos de experiência" },
+                { value: "13+", label: "anos de experiência" },
                 { value: "2 mil+", label: "pets atendidos" },
                 { value: "5.0", label: "avaliação no Google" },
                 { value: "100%", label: "cuidado individual" },
@@ -438,7 +443,9 @@ export default function Home() {
 
               <div>
                 <SectionHeading eyebrow="O jeito Luppy de cuidar" title="Mais do que estética: confiança em cada visita.">
-                  <p>Há mais de 8 anos, nossa rotina é cuidar de cada pet com calma, técnica e atenção aos pequenos sinais. O resultado aparece no pelo, mas começa no jeito como ele é recebido.</p>
+                  <p>Unimos experiência, dedicação e carinho para oferecer ao seu pet uma experiência especial.</p>
+                  <p className="mt-4">Roberson André da Silva, com mais de 13 anos de experiência no ramo de pet e tosa, e Luci Urnau, com experiência em administração, unem forças para construir um espaço pensado para cuidar do seu pet com profissionalismo, respeito e carinho.</p>
+                  <p className="mt-5 font-bold text-[var(--luppy-forest)]">Seu pet em boas mãos.</p>
                 </SectionHeading>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {[
@@ -614,7 +621,7 @@ export default function Home() {
 
       <footer className="bg-[var(--luppy-forest-deep)] px-5 py-9 text-white">
         <div className="luppy-shell flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
-          <a href="#top" className="flex items-center gap-3">
+          <a href="#top" onClick={handleTopClick} className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white"><LogoMark className="h-11 w-11 object-contain" /></span>
             <span><strong className="block font-semibold">Luppy Pet Care Jardim</strong><small className="mt-1 block text-xs text-[var(--luppy-gold)]">Centro de estética animal</small></span>
           </a>
