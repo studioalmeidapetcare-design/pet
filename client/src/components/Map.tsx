@@ -5,6 +5,7 @@ interface MapViewProps {
   className?: string;
   initialCenter?: { lat: number; lng: number };
   initialZoom?: number;
+  address?: string;
   onMapReady?: (map: any) => void;
 }
 
@@ -12,10 +13,11 @@ export function MapView({
   className,
   initialCenter = { lat: -25.4719619, lng: -49.2280487 },
   initialZoom = 16,
+  address = "Rua Joaquim Amaral, 1174 - Jardim das Américas, Curitiba - PR, 81530-430",
 }: MapViewProps) {
   // Usa as coordenadas do Jardim das Américas para evitar o cartão antigo da marca anterior.
   const mapUrl = `https://www.google.com/maps?q=${initialCenter.lat},${initialCenter.lng}&z=${initialZoom}&output=embed`;
-  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${initialCenter.lat},${initialCenter.lng}`;
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
     <div className={cn("relative aspect-[1.7] h-auto w-full overflow-hidden rounded-3xl shadow-inner", className)}>
@@ -45,7 +47,7 @@ export function MapView({
         </span>
         <span className="min-w-0">
           <strong className="block truncate text-sm text-[var(--luppy-forest)]">Luppy Pet Care Jardim</strong>
-          <small className="mt-0.5 block truncate text-xs text-[var(--luppy-muted)]">Jardim das Américas · Curitiba – PR</small>
+          <small className="mt-0.5 block truncate text-xs text-[var(--luppy-muted)]">{address}</small>
         </span>
       </a>
     </div>

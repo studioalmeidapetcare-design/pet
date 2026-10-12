@@ -24,8 +24,8 @@ import {
 import { MapView } from "@/components/Map";
 
 const WHATSAPP_URL = "https://wa.me/message/YIPZSQPDCCGRB1";
-const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=-25.4719619,-49.2280487";
+const BUSINESS_ADDRESS = "Rua Joaquim Amaral, 1174 - Jardim das Américas, Curitiba - PR, 81530-430";
+const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BUSINESS_ADDRESS)}`;
 const INSTAGRAM_URL = "https://www.instagram.com/luppypetcarejardim/";
 
 const navItems = [
@@ -562,7 +562,7 @@ export default function Home() {
         <section id="contato" className="luppy-section bg-white">
           <div className="luppy-shell">
             <SectionHeading eyebrow="Vamos conversar" title="O próximo cuidado do seu pet pode começar agora.">
-              <p>Escolha o melhor horário para o seu pet e fale com a Luppy Pet Care Jardim pelo WhatsApp. Estamos no Jardim das Américas, em Curitiba.</p>
+                <p>Escolha o melhor horário para o seu pet e fale com a Luppy Pet Care Jardim pelo WhatsApp. Estamos na Rua Joaquim Amaral, 1174, no Jardim das Américas, em Curitiba.</p>
             </SectionHeading>
             <div className="luppy-map-frame">
                 <MapView initialCenter={{ lat: -25.4719619, lng: -49.2280487 }} initialZoom={16} className="rounded-[24px]" />
@@ -580,7 +580,7 @@ export default function Home() {
               </a>
               <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="luppy-contact-row group">
                 <span className="luppy-contact-icon bg-[var(--luppy-sand)] text-[var(--luppy-forest)]"><MapPin size={21} /></span>
-                <span><strong>Jardim das Américas</strong><small>Curitiba · Paraná</small></span>
+                <span><strong>Rua Joaquim Amaral, 1174</strong><small>Jardim das Américas · Curitiba – PR</small></span>
                 <ChevronRight size={18} className="ml-auto transition-transform group-hover:translate-x-1" />
               </a>
             </div>
