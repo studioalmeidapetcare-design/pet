@@ -695,6 +695,22 @@ h6 {
   50% { transform: translateY(5px); }
 }
 
+@media (max-width: 1023px) {
+  .luppy-header-shell {
+    position: relative;
+    justify-content: center;
+  }
+
+  .luppy-header-brand {
+    margin-inline: auto;
+  }
+
+  .luppy-header-actions {
+    position: absolute;
+    right: 0;
+  }
+}
+
 @media (max-width: 640px) {
   html {
     scroll-snap-type: none;

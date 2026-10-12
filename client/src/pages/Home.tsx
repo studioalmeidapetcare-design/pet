@@ -239,8 +239,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var(--luppy-forest)] text-[var(--luppy-ink)]">
       <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? "luppy-header luppy-header--scrolled" : "luppy-header"}`}>
-        <div className="luppy-shell flex h-[76px] items-center justify-between gap-4">
-          <a href="#top" className="flex items-center gap-3" aria-label="Luppy Pet Care Jardim - início">
+        <div className="luppy-header-shell luppy-shell flex h-[76px] items-center justify-between gap-4">
+          <a href="#top" className="luppy-header-brand flex items-center gap-3" aria-label="Luppy Pet Care Jardim - início">
             <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_8px_24px_rgba(24,94,86,0.12)]">
               <LogoMark className="h-11 w-11 object-contain" />
             </span>
@@ -258,8 +258,8 @@ export default function Home() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-header-cta hidden sm:inline-flex">
+          <div className="luppy-header-actions flex items-center gap-3">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-header-cta hidden lg:inline-flex">
               <MessageCircle size={16} />
               Agendar horário
             </a>
