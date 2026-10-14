@@ -12,7 +12,6 @@ import {
   MapPin,
   Menu,
   MessageCircle,
-  PawPrint,
   PhoneCall,
   Quote,
   Scissors,
@@ -45,70 +44,71 @@ const navItems = [
 ];
 
 const heroImages = [
-  "/images/luppy.jpeg",
-  "/images/pet_yorkshire_new.jpg",
-  "/images/pet_shih_tzu_new.webp",
-  "/images/pet_shih_tzu_butterfly.jpg",
+  "/images/luppy-cutout.png",
+  "/images/hero-yorkshire-cutout.png",
+  "/images/hero-shih-tzu-bow-cutout.png",
 ];
 
 const petGalleryImages = [
   {
     id: 1,
-    src: "/images/pet_maltese.webp",
+    src: "/images/gallery-maltese-cutout.png",
     alt: "Maltês após banho e tosa",
     title: "Maltês renovado",
     breed: "Maltês",
   },
   {
     id: 2,
-    src: "/images/pet_chihuahua.webp",
+    src: "/images/gallery-chihuahua-cutout.png",
     alt: "Chihuahua bem cuidado pela Luppy Pet Care Jardim",
     title: "Cuidado delicado",
     breed: "Chihuahua",
   },
   {
     id: 3,
-    src: "/images/pet_shih_tzu_butterfly.jpg",
+    src: "/images/gallery-shih-tzu-butterfly-cutout.png",
     alt: "Shih Tzu com laço após grooming",
     title: "Charme em cada detalhe",
     breed: "Shih Tzu",
   },
   {
     id: 4,
-    src: "/images/pet_shih_tzu_new.webp",
+    src: "/images/gallery-shih-tzu-cutout.png",
     alt: "Shih Tzu feliz depois da transformação",
     title: "Shih Tzu feliz",
     breed: "Shih Tzu",
   },
   {
     id: 5,
-    src: "/images/pet_yorkshire_new.jpg",
+    src: "/images/gallery-yorkshire-cutout.png",
     alt: "Yorkshire elegante após banho e tosa",
     title: "Yorkshire elegante",
     breed: "Yorkshire",
   },
   {
     id: 6,
-    src: "/images/pet_border_collie.jpg",
+    src: "/images/gallery-border-collie-cutout.png",
     alt: "Border Collie com olhos azuis",
     title: "Beleza natural",
     breed: "Border Collie",
   },
   {
     id: 7,
-    src: "/images/pet_shih_tzu_pink.jpg",
+    src: "/images/gallery-shih-tzu-pink-cutout.png",
     alt: "Shih Tzu com laço rosa",
     title: "Um toque de carinho",
     breed: "Shih Tzu",
   },
   {
     id: 8,
-    src: "/images/pet_pugs.jpg",
+    src: "/images/gallery-pugs-cutout.png",
     alt: "Dois Pugs felizes depois do banho",
     title: "Dupla de fofura",
     breed: "Pug",
   },
 ];
+
+const galleryLoopImages = [...petGalleryImages, ...petGalleryImages];
 
 const services: { icon: LucideIcon; number: string; title: string; desc: string }[] = [
   {
@@ -230,6 +230,20 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const timer = window.setInterval(() => {
+      const gallery = galleryRef.current;
+      if (!gallery) return;
+      const step = 261;
+      const loopWidth = gallery.scrollWidth / 2;
+      if (gallery.scrollLeft >= loopWidth - step) {
+        gallery.scrollTo({ left: 0, behavior: "auto" });
+      }
+      gallery.scrollBy({ left: step, behavior: "smooth" });
+    }, 3200);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setSelectedImage(null);
     };
@@ -239,8 +253,17 @@ export default function Home() {
 
   const handleGalleryScroll = (direction: "left" | "right") => {
     if (!galleryRef.current) return;
-    galleryRef.current.scrollBy({
-      left: direction === "left" ? -320 : 320,
+    const gallery = galleryRef.current;
+    const step = 261;
+    const loopWidth = gallery.scrollWidth / 2;
+    if (direction === "left" && gallery.scrollLeft <= 0) {
+      gallery.scrollTo({ left: loopWidth, behavior: "auto" });
+    }
+    if (direction === "right" && gallery.scrollLeft >= loopWidth - step) {
+      gallery.scrollTo({ left: 0, behavior: "auto" });
+    }
+    gallery.scrollBy({
+      left: direction === "left" ? -step : step,
       behavior: "smooth",
     });
   };
@@ -308,22 +331,6 @@ export default function Home() {
 
       <main>
         <section id="top" className="luppy-hero relative pt-32 sm:pt-40">
-          <div className="luppy-welcome-backdrop" aria-hidden="true">
-            {heroImages.map((src, index) => (
-              <img
-                key={src}
-                src={src}
-                alt=""
-                className={`transition-opacity duration-1000 ${activeHeroImage === index ? "opacity-100" : "opacity-0"}`}
-              />
-            ))}
-            <div className="luppy-welcome-backdrop-shade" />
-            <div className="luppy-welcome-logo" aria-hidden="true">
-              <LogoMark className="h-full w-full object-contain" />
-            </div>
-          </div>
-          <div className="luppy-hero-leaf luppy-hero-leaf--one" />
-          <div className="luppy-hero-leaf luppy-hero-leaf--two" />
           <div className="luppy-shell relative z-10">
             <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
               <div className="max-w-xl animate-[luppy-rise_0.7s_ease-out_both]">
@@ -331,10 +338,10 @@ export default function Home() {
                   <Leaf size={15} />
                   Bem-vindo à Luppy Pet Care Jardim
                 </div>
-                <h1 className="luppy-display text-5xl leading-[0.98] text-white sm:text-7xl">
+                <h1 className="luppy-display text-5xl leading-[0.98] text-[var(--luppy-forest)] sm:text-7xl">
                   Um cuidado <em className="not-italic text-[var(--luppy-gold-dark)]">bonito</em> começa pelo bem-estar.
                 </h1>
-                <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/75">
+                <p className="mt-7 max-w-lg text-lg leading-relaxed text-[var(--luppy-muted)]">
                   Na Luppy Pet Care Jardim, banho, tosa e carinho caminham juntos para que cada pet se sinta seguro, leve e ainda mais feliz.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -347,25 +354,14 @@ export default function Home() {
                     <ChevronRight size={18} />
                   </a>
                 </div>
-                <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium text-white/75">
+                <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 text-sm font-medium text-[var(--luppy-muted)]">
                   <span className="inline-flex items-center gap-2"><Star size={16} fill="currentColor" className="text-[var(--luppy-gold)]" /> Avaliação 5.0</span>
                   <span className="inline-flex items-center gap-2"><ShieldCheck size={16} className="text-[var(--luppy-gold)]" /> Atendimento cuidadoso</span>
                 </div>
               </div>
 
               <div className="relative mx-auto w-full max-w-[550px] animate-[luppy-rise_0.9s_0.1s_ease-out_both]">
-                <div className="luppy-hero-ring" />
-                <div className="relative z-10 mx-auto mb-5 flex w-fit items-center gap-3 rounded-[1.75rem] border border-[var(--luppy-line)] bg-white/85 px-4 py-3 shadow-[0_12px_28px_rgba(24,94,86,0.1)] backdrop-blur sm:mb-6">
-                  <div className="luppy-hero-logo-frame h-24 w-24 sm:h-28 sm:w-28">
-                    <LogoMark className="h-full w-full object-contain" />
-                  </div>
-                  <div className="pr-2">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--luppy-gold-dark)]">Luppy Pet Care Jardim</p>
-                    <p className="mt-1 text-sm font-semibold leading-tight text-[var(--luppy-forest)]">Estética animal em Curitiba</p>
-                    <p className="mt-1 text-xs text-[var(--luppy-muted)]">Cuidado bonito, do começo ao fim.</p>
-                  </div>
-                </div>
-                <div className="relative aspect-[0.94] overflow-hidden rounded-[38%_38%_26%_26%/28%_28%_18%_18%] border-[10px] border-white bg-[var(--luppy-sand)] shadow-[0_28px_60px_rgba(24,94,86,0.18)]">
+                <div className="luppy-hero-image-frame relative z-10 aspect-[0.9]">
                   {heroImages.map((src, index) => (
                     <img
                       key={src}
@@ -374,16 +370,6 @@ export default function Home() {
                       className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${activeHeroImage === index ? "opacity-100" : "opacity-0"}`}
                     />
                   ))}
-                  <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3 rounded-2xl bg-[rgba(255,255,255,0.9)] p-4 shadow-lg backdrop-blur-md">
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Seu pet bem cuidado</p>
-                      <p className="mt-1 font-semibold text-[var(--luppy-forest)]">Seu pet em boas mãos.</p>
-                    </div>
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--luppy-forest)] text-white"><PawPrint size={21} /></span>
-                  </div>
-                </div>
-                <div className="absolute -bottom-7 -left-6 flex h-28 w-28 items-center justify-center rounded-full border-8 border-[var(--luppy-cream)] bg-[var(--luppy-gold)] p-3 text-center text-xs font-bold uppercase leading-tight tracking-[0.08em] text-white shadow-xl sm:-left-10">
-                  <span>Carinho<br />em cada<br />detalhe</span>
                 </div>
                 <div className="mt-8 flex justify-center gap-2">
                   {heroImages.map((_, index) => (
@@ -516,13 +502,9 @@ export default function Home() {
               </div>
             </div>
             <div ref={galleryRef} className="luppy-gallery-scroll">
-              {petGalleryImages.map((image) => (
-                <button key={image.id} type="button" className="luppy-gallery-card group" onClick={() => setSelectedImage(image)}>
-                  <img src={image.src} alt={image.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                  <span className="absolute inset-x-4 bottom-4 rounded-2xl bg-[rgba(255,255,255,0.92)] px-4 py-3 text-left opacity-0 shadow-lg transition duration-300 group-hover:opacity-100">
-                    <strong className="block text-sm text-[var(--luppy-forest)]">{image.title}</strong>
-                    <small className="mt-1 block text-xs font-semibold uppercase tracking-[0.14em] text-[var(--luppy-gold-dark)]">{image.breed}</small>
-                  </span>
+              {galleryLoopImages.map((image, index) => (
+                <button key={`${image.id}-${index}`} type="button" className="luppy-gallery-card group" onClick={() => setSelectedImage(image)} aria-label={`${image.title} — ${image.breed}`}>
+                  <img src={image.src} alt={image.alt} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" />
                 </button>
               ))}
             </div>
