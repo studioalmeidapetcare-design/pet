@@ -45,6 +45,7 @@ const navItems = [
 ];
 
 const heroImages = [
+  "/images/luppy.jpeg",
   "/images/pet_yorkshire_new.jpg",
   "/images/pet_shih_tzu_new.webp",
   "/images/pet_shih_tzu_butterfly.jpg",
@@ -224,7 +225,7 @@ export default function Home() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveHeroImage((previous) => (previous + 1) % heroImages.length);
-    }, 4800);
+    }, 8000);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -317,6 +318,9 @@ export default function Home() {
               />
             ))}
             <div className="luppy-welcome-backdrop-shade" />
+            <div className="luppy-welcome-logo" aria-hidden="true">
+              <LogoMark className="h-full w-full object-contain" />
+            </div>
           </div>
           <div className="luppy-hero-leaf luppy-hero-leaf--one" />
           <div className="luppy-hero-leaf luppy-hero-leaf--two" />

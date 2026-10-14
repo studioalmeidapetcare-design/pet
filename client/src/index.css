@@ -248,6 +248,27 @@ h6 {
     linear-gradient(180deg, rgba(15, 69, 63, 0.26) 0%, rgba(15, 69, 63, 0.08) 48%, rgba(15, 69, 63, 0.7) 100%);
 }
 
+.luppy-welcome-logo {
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  z-index: 1;
+  width: clamp(220px, 28vw, 390px);
+  aspect-ratio: 1;
+  padding: clamp(1rem, 2vw, 1.5rem);
+  border: 2px solid rgba(210, 156, 70, 0.7);
+  border-radius: 2rem;
+  background: rgba(238, 228, 211, 0.94);
+  box-shadow: 0 24px 60px rgba(8, 40, 36, 0.32), 0 0 0 10px rgba(255, 255, 255, 0.12);
+  transform: translateY(-50%) rotate(4deg);
+  animation: luppy-logo-float 7s ease-in-out infinite;
+}
+
+@keyframes luppy-logo-float {
+  0%, 100% { transform: translateY(-50%) rotate(4deg); }
+  50% { transform: translateY(calc(-50% - 8px)) rotate(1deg); }
+}
+
 .luppy-hero .luppy-shell > .grid > :last-child {
   display: none;
 }
@@ -794,6 +815,15 @@ h6 {
   .luppy-hero .luppy-proof-bar span {
     font-size: 0.55rem;
     letter-spacing: 0.06em;
+  }
+
+  .luppy-welcome-logo {
+    top: 38%;
+    right: 4%;
+    width: clamp(150px, 43vw, 220px);
+    padding: 0.7rem;
+    border-radius: 1.25rem;
+    opacity: 0.82;
   }
 
   .luppy-scroll-cue {
