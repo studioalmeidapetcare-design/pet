@@ -269,7 +269,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--luppy-forest)] text-[var(--luppy-ink)]">
+    <div className="min-h-screen bg-white text-[var(--luppy-ink)]">
       <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? "luppy-header luppy-header--scrolled" : "luppy-header"}`}>
         <div className="luppy-header-shell luppy-shell flex h-[76px] items-center justify-between gap-4">
           <a href="#top" onClick={handleTopClick} className="luppy-header-brand flex items-center gap-3" aria-label="Luppy Pet Care Jardim - início">
@@ -278,7 +278,7 @@ export default function Home() {
             </span>
             <span className="hidden sm:block">
               <strong className="block max-w-[190px] font-semibold leading-tight text-[var(--luppy-forest)]">Luppy Pet Care Jardim</strong>
-              <small className="mt-1 block text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Estética animal</small>
+              <small className="mt-1 block text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--luppy-gold-dark)]">Banho, tosa e carinho</small>
             </span>
           </a>
 
@@ -339,10 +339,10 @@ export default function Home() {
                   Bem-vindo à Luppy Pet Care Jardim
                 </div>
                 <h1 className="luppy-display text-5xl leading-[0.98] text-[var(--luppy-forest)] sm:text-7xl">
-                  Um cuidado <em className="not-italic text-[var(--luppy-gold-dark)]">bonito</em> começa pelo bem-estar.
+                  Banho, tosa <em className="not-italic text-[var(--luppy-gold-dark)]">e carinho.</em>
                 </h1>
                 <p className="mt-7 max-w-lg text-lg leading-relaxed text-[var(--luppy-muted)]">
-                  Na Luppy Pet Care Jardim, banho, tosa e carinho caminham juntos para que cada pet se sinta seguro, leve e ainda mais feliz.
+                  Agende o cuidado do seu pet pelo WhatsApp.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="luppy-gold-button">
